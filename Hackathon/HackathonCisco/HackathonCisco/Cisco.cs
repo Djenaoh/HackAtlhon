@@ -10,6 +10,7 @@ namespace HackathonCisco
     class Cisco
     {
 
+        // Attribut
         private string hostname;
         private string banner;
         private string securePriviledgeMode;
@@ -18,6 +19,7 @@ namespace HackathonCisco
         private bool noIpDomaineLookup = false;
         private List<Interfaces> interfaces;
 
+        // Setter/Getter
         public string Hostname { get => hostname; set => hostname = value; }
         public List<Interfaces> Interfaces { get => interfaces; set => interfaces = value; }
         public bool NoIpDomaineLookup { get => noIpDomaineLookup; set => noIpDomaineLookup = value; }
@@ -26,8 +28,11 @@ namespace HackathonCisco
         public string Banner { get => banner; set => banner = value; }
         public bool EnableSecureConsoleMode { get => enableSecureConsoleMode; set => enableSecureConsoleMode = value; }
 
+        // Contructor
+        public Cisco() {}
         public Cisco(string hostname){this.Hostname = hostname;}
 
+        // Methode to contruct the ToString
         private string GetNoIpDomaineLookup()
         {
             return this.NoIpDomaineLookup ? "no ip domain-lookup\n" : "";
@@ -66,6 +71,7 @@ namespace HackathonCisco
             return "";
         }
 
+        // Methode to add
         public Cisco AddInterfaces(params Interfaces[] list)
         {
             if (this.interfaces == null)
@@ -110,13 +116,12 @@ namespace HackathonCisco
             return this;
         }
 
-
-
         public void RemoveInterfaces()
         {
 
         }
 
+        // ToString Methode
         public new string ToString()
         {
             string res = "enable\n";
@@ -133,68 +138,7 @@ namespace HackathonCisco
                     res += inte.ToString() + "exit\n";
                 }
             }
-
             return res;
-        }
-
-        public void SaveToTxt(string path, string fileName, bool append = false)
-        {
-            StreamWriter wr = new StreamWriter(path + fileName, append);
-            wr.WriteLine(ToString());
-            wr.Close();
-        }
-
-        public void ReadFromTxt(string path, string fileName)
-        {
-            if (File.Exists(path + fileName))
-            {
-                var lstEnum = EnumCiscoWords.GetValues(typeof(EnumCiscoWords));
-                StreamReader reader = new StreamReader(path + fileName);
-                int flag = 0;
-                while (!reader.EndOfStream)
-                {
-                    string tmp = reader.ReadLine();
-                    string[] lstTmp = tmp.Split(' ');
-                    if (flag == 1)
-                    {
-                        if ("password" == Convert.ToString(lstTmp[0]))
-                        {
-                            this.AddSecureConsoleMode(Convert.ToString(lstTmp[1]));
-                        }
-                        else if ("login" == Convert.ToString(lstTmp[0]))
-                        {
-                            this.AddEnableSecureConsoleMode(true);
-                        }
-                        else if ("exit" == Convert.ToString(lstTmp[0]))
-                        {
-                            flag = 0;
-                        }
-                    }
-                    else if ("hostname" == Convert.ToString(lstTmp[0]))
-                    {
-                        this.AddHostname(Convert.ToString(lstTmp[1]));
-                    }
-                    else if (lstTmp.Length > 1)
-                    {
-                        if ("enable" == Convert.ToString(lstTmp[0]) && "secret" == Convert.ToString(lstTmp[1]))
-                        {
-                            this.AddSecurePriviledgeMode(Convert.ToString(lstTmp[2]));
-                        }
-                        else if ("line" == Convert.ToString(lstTmp[0]) && "console" == Convert.ToString(lstTmp[1]) && "0" == Convert.ToString(lstTmp[2]))
-                        {
-                            flag = 1;
-                        }
-                        else if ("banner" == Convert.ToString(lstTmp[0]) && "motd" == Convert.ToString(lstTmp[1]))
-                        {
-                            string ban = Convert.ToString(lstTmp[2]);
-                        }
-                    }
-                    
-                    
-
-                }
-                reader.Close();
-            }
         }
     }
 }

@@ -57,6 +57,8 @@
     </ApplicationDefinition>
     <Compile Include="BinarySave.cs" />
     <Compile Include="IP.cs" />
+    <Compile Include="ReadWrite.cs" />
+    <Compile Include="Routes.cs" />
     <Compile Include="TypeOfInterfaces.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

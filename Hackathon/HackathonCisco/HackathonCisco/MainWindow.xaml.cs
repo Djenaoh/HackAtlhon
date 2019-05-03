@@ -26,6 +26,7 @@ namespace HackathonCisco
         public MainWindow()
         {
             InitializeComponent();
+            // Interfaces
             Interfaces int01 = new Interfaces(TypeOfInterfaces.FastEthernet, 0, 1, true, "Reseau A", "10.10.10.254", "255.255.255.0");
             Interfaces int02 = new Interfaces();
             int02.AddTypeOfInterfaces(TypeOfInterfaces.Gigabit)
@@ -34,17 +35,25 @@ namespace HackathonCisco
                 .AddMask(new IP(255, 255, 0, 0))
                 .AddPreInterfaces(0)
                 .AddPostInterfaces(1);
+            // Routes
+            Routes rou01 = new Routes("10.10.10.0", "255.255.255.0", TypeOfInterfaces.Gigabit, 0, 1);
+            Routes rou02 = new Routes("0.0.0.0", "0.0.0.0", "10.10.10.0");
+            Routes rou03 = new Routes("10.20.20.0", "255.255.255.0", TypeOfInterfaces.Gigabit, 0, 1, "10.10.10.0");
+            // Router
             CiscoRouter routeur = new CiscoRouter("routeur001");
-            routeur.AddInterfaces(int02)
-                .AddBanner("Super Routeur")
+            routeur.AddBanner("Super Routeur")
+                .AddInterfaces(int01, int02)
                 .AddNoIpDomaineLookup(true)
                 .AddSecureConsoleMode("cisco", true)
-                .AddSecurePriviledgeMode("cisco");
-            //MessageBox.Show(routeur.SaveToConf());
-            routeur.SaveToTxt(PATH, FILE_NAME);
-            CiscoRouter routeur2 = new CiscoRouter();
-            routeur2.ReadFromTxt(PATH, FILE_NAME);
-            MessageBox.Show(routeur2.ToString());
+                .AddSecurePriviledgeMode("cisco")
+                .AddRoutes(rou01, rou02, rou03);
+
+            MessageBox.Show(routeur.ToString());
+            ReadWrite.SaveToTxt(routeur, PATH, FILE_NAME);
+
+            //CiscoRouter routeur2 = new CiscoRouter();
+            //routeur2.ReadFromTxt(PATH, FILE_NAME);
+            //MessageBox.Show(routeur2.ToString());
         }
     }
 }
