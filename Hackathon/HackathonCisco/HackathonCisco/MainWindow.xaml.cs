@@ -24,11 +24,20 @@ namespace HackathonCisco
         {
             InitializeComponent();
             Interfaces int01 = new Interfaces(TypeOfInterfaces.FastEthernet, 0, 1, true, "Reseau A", "10.10.10.254", "255.255.255.0");
-
-            CiscoRouter test = new CiscoRouter();
-            test.Hostname = "cisco";
-            test.AddInterfaces(int01);
-            MessageBox.Show(test.SaveToConf());
+            Interfaces int02 = new Interfaces();
+            int02.AddTypeOfInterfaces(TypeOfInterfaces.Gigabit)
+                .AddDescription("Super reseau 2")
+                .AddIp("192.168.0.1")
+                .AddMask(new IP(255, 255, 0, 0))
+                .AddPreInterfaces(1)
+                .AddPostInterfaces(0);
+            CiscoRouter routeur = new CiscoRouter("routeur001");
+            routeur.AddInterfaces(int01, int02)
+                .AddBanner("Super Routeur")
+                .AddNoIpDomaineLookup(true)
+                .AddSecureConsoleMode("cisco")
+                .AddSecurePriviledgeMode("cisco");
+            MessageBox.Show(routeur.SaveToConf());
 
         }
     }

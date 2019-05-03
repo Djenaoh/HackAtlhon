@@ -8,5 +8,21 @@ namespace HackathonCisco
 {
     class CiscoRouter : Cisco
     {
+
+        public CiscoRouter() : base("Routeur") { }
+
+        public CiscoRouter(string hostname) : base(hostname)
+        {
+
+
+        }
+
+        public new string SaveToConf()
+        {
+            string res = "";
+
+            return base.SaveToConf() + res;
+        }
+
     }
 }

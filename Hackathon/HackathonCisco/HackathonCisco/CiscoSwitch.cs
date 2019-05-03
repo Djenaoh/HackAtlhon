@@ -9,10 +9,18 @@ namespace HackathonCisco
     class CiscoSwitch : Cisco
     {
 
+        public CiscoSwitch() : base("Switch") {}
+
+        public CiscoSwitch(string hostname) : base(hostname)
+        {
+            
+
+        }
+
 
         public new string SaveToConf()
         {
-            string res = "test";
+            string res = "";
 
             return base.SaveToConf() + res;
         }

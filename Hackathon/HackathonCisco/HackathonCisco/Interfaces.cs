@@ -18,6 +18,8 @@
         public IP Ip { get => ip; set => ip = value; }
         public IP Mask { get => mask; set => mask = value; }
 
+        public Interfaces() { }
+
         public Interfaces(TypeOfInterfaces typeOfInterfaces, int preInterfaces, int postInterfaces, bool active, string description, IP ip, IP mask)
         {
             TypeOfInterfaces = typeOfInterfaces;
@@ -40,7 +42,53 @@
             Mask = new IP(mask);
         }
 
-        public string GetActiveString()
+        public Interfaces AddPreInterfaces(int preInterfaces)
+        {
+            this.PreInterfaces = preInterfaces;
+            return this;
+        }
+        public Interfaces AddPostInterfaces(int postInterfaces)
+        {
+            this.PostInterfaces = postInterfaces;
+            return this;
+        }
+        public Interfaces AddTypeOfInterfaces(TypeOfInterfaces typeOfInterfaces)
+        {
+            this.TypeOfInterfaces = typeOfInterfaces;
+            return this;
+        }
+        public Interfaces AddActive(bool active)
+        {
+            this.Active = active;
+            return this;
+        }
+        public Interfaces AddDescription(string active)
+        {
+            this.Description = description;
+            return this;
+        }
+        public Interfaces AddIp(IP ip)
+        {
+            this.Ip = ip;
+            return this;
+        }
+        public Interfaces AddMask(IP mask)
+        {
+            this.Mask = mask;
+            return this;
+        }
+        public Interfaces AddIp(string ip)
+        {
+            this.Ip = new IP(ip);
+            return this;
+        }
+        public Interfaces AddMask(string mask)
+        {
+            this.Mask = new IP(mask);
+            return this;
+        }
+
+        private string GetActiveString()
         {
             return this.Active ? "no shutdown" : "shutdown";
         }
