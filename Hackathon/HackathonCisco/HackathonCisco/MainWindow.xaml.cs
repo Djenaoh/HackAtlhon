@@ -38,11 +38,13 @@ namespace HackathonCisco
             routeur.AddInterfaces(int02)
                 .AddBanner("Super Routeur")
                 .AddNoIpDomaineLookup(true)
-                .AddSecureConsoleMode("cisco")
+                .AddSecureConsoleMode("cisco", true)
                 .AddSecurePriviledgeMode("cisco");
-            MessageBox.Show(routeur.SaveToConf());
-            routeur.SaveToTxt();
-
+            //MessageBox.Show(routeur.SaveToConf());
+            routeur.SaveToTxt(PATH, FILE_NAME);
+            CiscoRouter routeur2 = new CiscoRouter();
+            routeur2.ReadFromTxt(PATH, FILE_NAME);
+            MessageBox.Show(routeur2.ToString());
         }
     }
 }

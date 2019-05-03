@@ -18,11 +18,11 @@ namespace HackathonCisco
         }
 
 
-        public new string SaveToConf()
+        public new string ToString()
         {
             string res = "";
 
-            return base.SaveToConf() + res;
+            return base.ToString() + res;
         }
     }
 }

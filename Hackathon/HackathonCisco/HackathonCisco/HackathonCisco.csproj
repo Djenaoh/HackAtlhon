@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BinarySave.cs" />
     <Compile Include="IP.cs" />
     <Compile Include="TypeOfInterfaces.cs" />
     <Page Include="MainWindow.xaml">

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace HackathonCisco
 {
-    public class EnumCiscoWords
+    public enum EnumCiscoWords
     {
 
-        public const string HOSTNAME = "hostname";
+        hostname
+            
 
     }
 }

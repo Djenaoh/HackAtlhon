@@ -14,6 +14,7 @@ namespace HackathonCisco
         private string banner;
         private string securePriviledgeMode;
         private string secureConsoleMode;
+        private bool enableSecureConsoleMode = false;
         private bool noIpDomaineLookup = false;
         private List<Interfaces> interfaces;
 
@@ -23,6 +24,7 @@ namespace HackathonCisco
         public string SecurePriviledgeMode { get => securePriviledgeMode; set => securePriviledgeMode = value; }
         public string SecureConsoleMode { get => secureConsoleMode; set => secureConsoleMode = value; }
         public string Banner { get => banner; set => banner = value; }
+        public bool EnableSecureConsoleMode { get => enableSecureConsoleMode; set => enableSecureConsoleMode = value; }
 
         public Cisco(string hostname){this.Hostname = hostname;}
 
@@ -30,13 +32,17 @@ namespace HackathonCisco
         {
             return this.NoIpDomaineLookup ? "no ip domain-lookup\n" : "";
         }
+        private string GetEnableSecureConsoleMode()
+        {
+            return this.EnableSecureConsoleMode ? "login\n" : "";
+        }
         private string GetSecureConsoleMode()
         {
             if (this.SecureConsoleMode != null)
             {
                 string res = "line console 0\n";
                 res += "password " + this.secureConsoleMode + "\n";
-                res += "login\n";
+                res += this.GetEnableSecureConsoleMode();
                 res += "exit\n";
                 return res;
             } return "";
@@ -87,9 +93,15 @@ namespace HackathonCisco
             this.SecurePriviledgeMode = securePriviledgeMode;
             return this;
         }
-        public Cisco AddSecureConsoleMode(string secureConsoleMode)
+        public Cisco AddSecureConsoleMode(string secureConsoleMode, bool enableSecureConsoleMode = false)
         {
             this.SecureConsoleMode = secureConsoleMode;
+            this.EnableSecureConsoleMode = enableSecureConsoleMode;
+            return this;
+        }
+        public Cisco AddEnableSecureConsoleMode(bool enableSecureConsoleMode)
+        {
+            this.EnableSecureConsoleMode = enableSecureConsoleMode;
             return this;
         }
         public Cisco AddNoIpDomaineLookup(bool noIpDomaineLookup)
@@ -105,28 +117,84 @@ namespace HackathonCisco
 
         }
 
-        public string SaveToConf()
+        public new string ToString()
         {
             string res = "enable\n";
-            res += "configure terminal \n";
+            res += "configure terminal\n";
             res += "hostname " + hostname + "\n";
             res += this.GetSecurePriviledgeMode();
             res += this.GetSecureConsoleMode();
             res += this.GetBanner();
             res += this.GetNoIpDomaineLookup();
-            foreach (Interfaces inte in this.Interfaces)
+            if (this.Interfaces != null)
             {
-                res += inte.ToString() + "exit\n";
+                foreach (Interfaces inte in this.Interfaces)
+                {
+                    res += inte.ToString() + "exit\n";
+                }
             }
 
             return res;
         }
 
-        public void SaveToTxt()
+        public void SaveToTxt(string path, string fileName, bool append = false)
         {
-            StreamWriter wr = new StreamWriter(MainWindow.PATH + MainWindow.FILE_NAME, false);
-            wr.WriteLine(SaveToConf());
+            StreamWriter wr = new StreamWriter(path + fileName, append);
+            wr.WriteLine(ToString());
             wr.Close();
+        }
+
+        public void ReadFromTxt(string path, string fileName)
+        {
+            if (File.Exists(path + fileName))
+            {
+                var lstEnum = EnumCiscoWords.GetValues(typeof(EnumCiscoWords));
+                StreamReader reader = new StreamReader(path + fileName);
+                int flag = 0;
+                while (!reader.EndOfStream)
+                {
+                    string tmp = reader.ReadLine();
+                    string[] lstTmp = tmp.Split(' ');
+                    if (flag == 1)
+                    {
+                        if ("password" == Convert.ToString(lstTmp[0]))
+                        {
+                            this.AddSecureConsoleMode(Convert.ToString(lstTmp[1]));
+                        }
+                        else if ("login" == Convert.ToString(lstTmp[0]))
+                        {
+                            this.AddEnableSecureConsoleMode(true);
+                        }
+                        else if ("exit" == Convert.ToString(lstTmp[0]))
+                        {
+                            flag = 0;
+                        }
+                    }
+                    else if ("hostname" == Convert.ToString(lstTmp[0]))
+                    {
+                        this.AddHostname(Convert.ToString(lstTmp[1]));
+                    }
+                    else if (lstTmp.Length > 1)
+                    {
+                        if ("enable" == Convert.ToString(lstTmp[0]) && "secret" == Convert.ToString(lstTmp[1]))
+                        {
+                            this.AddSecurePriviledgeMode(Convert.ToString(lstTmp[2]));
+                        }
+                        else if ("line" == Convert.ToString(lstTmp[0]) && "console" == Convert.ToString(lstTmp[1]) && "0" == Convert.ToString(lstTmp[2]))
+                        {
+                            flag = 1;
+                        }
+                        else if ("banner" == Convert.ToString(lstTmp[0]) && "motd" == Convert.ToString(lstTmp[1]))
+                        {
+                            string ban = Convert.ToString(lstTmp[2]);
+                        }
+                    }
+                    
+                    
+
+                }
+                reader.Close();
+            }
         }
     }
 }
