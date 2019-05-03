@@ -2,59 +2,41 @@
 {
     class Interfaces
     {
-        private TypeOfInterfaces typeOfInterfaces;
-        private int preInterfaces;
-        private int postInterfaces;
+
+        // Attribut
+        private Ports port;
         private bool active = false;
         private string description;
         private IP ip;
         private IP mask;
 
-        public TypeOfInterfaces TypeOfInterfaces { get => typeOfInterfaces; set => typeOfInterfaces = value; }
-        public int PreInterfaces { get => preInterfaces; set => preInterfaces = value; }
-        public int PostInterfaces { get => postInterfaces; set => postInterfaces = value; }
+        // Setter/Getter
         public bool Active { get => active; set => active = value; }
         public string Description { get => description; set => description = value; }
         public IP Ip { get => ip; set => ip = value; }
         public IP Mask { get => mask; set => mask = value; }
+        public Ports Port { get => port; set => port = value; }
 
-        public Interfaces() { }
-
-        public Interfaces(TypeOfInterfaces typeOfInterfaces, int preInterfaces, int postInterfaces, bool active, string description, IP ip, IP mask)
+        // Contructor
+        public Interfaces() {}
+        public Interfaces(Ports port, bool active, string description, IP ip, IP mask)
         {
-            TypeOfInterfaces = typeOfInterfaces;
-            PreInterfaces = preInterfaces;
-            PostInterfaces = postInterfaces;
+            this.Port = port;
             Active = active;
             Description = description;
             Ip = ip;
             Mask = mask;
         }
 
-        public Interfaces(TypeOfInterfaces typeOfInterfaces, int preInterfaces, int postInterfaces, bool active, string description, string ip, string mask)
+        // Methode to add
+        public Interfaces AddPort(Ports port)
         {
-            TypeOfInterfaces = typeOfInterfaces;
-            PreInterfaces = preInterfaces;
-            PostInterfaces = postInterfaces;
-            Active = active;
-            Description = description;
-            Ip = new IP(ip);
-            Mask = new IP(mask);
-        }
-
-        public Interfaces AddPreInterfaces(int preInterfaces)
-        {
-            this.PreInterfaces = preInterfaces;
+            this.Port = port;
             return this;
         }
-        public Interfaces AddPostInterfaces(int postInterfaces)
+        public Interfaces AddPort(TypeOfInterfaces typeOfPort, int prePort, int postPort)
         {
-            this.PostInterfaces = postInterfaces;
-            return this;
-        }
-        public Interfaces AddTypeOfInterfaces(TypeOfInterfaces typeOfInterfaces)
-        {
-            this.TypeOfInterfaces = typeOfInterfaces;
+            this.Port = new Ports(typeOfPort, prePort, postPort);
             return this;
         }
         public Interfaces AddActive(bool active)
@@ -88,15 +70,17 @@
             return this;
         }
 
+        // Methode to contruct the ToStrin
         private string GetActiveString()
         {
             return this.Active ? "no shutdown" : "shutdown";
         }
 
+        // ToString Methode
         public new string ToString()
         {
             string res = "";
-            res += "interface " + this.TypeOfInterfaces + " " + this.PreInterfaces + "/" + this.PostInterfaces + "\n";
+            res += "interface " + this.Port.ToString() + "\n";
             res += "ip address " + this.Ip.ToString() + " " + this.Mask.ToString() + "\n";
             res += "description " + this.Description + "\n";
             res += this.GetActiveString() + "\n";

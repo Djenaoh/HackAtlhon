@@ -27,18 +27,16 @@ namespace HackathonCisco
         {
             InitializeComponent();
             // Interfaces
-            Interfaces int01 = new Interfaces(TypeOfInterfaces.FastEthernet, 0, 1, true, "Reseau A", "10.10.10.254", "255.255.255.0");
+            Interfaces int01 = new Interfaces(new Ports(TypeOfInterfaces.FastEthernet, 0, 1), true, "Reseau A", new IP ("10.10.10.254"), new IP("255.255.255.0"));
             Interfaces int02 = new Interfaces();
-            int02.AddTypeOfInterfaces(TypeOfInterfaces.Gigabit)
+            int02.AddPort(new Ports())
                 .AddDescription("Super reseau 2")
                 .AddIp("192.168.0.1")
-                .AddMask(new IP(255, 255, 0, 0))
-                .AddPreInterfaces(0)
-                .AddPostInterfaces(1);
+                .AddMask(new IP(255, 255, 0, 0));
             // Routes
-            Routes rou01 = new Routes("10.10.10.0", "255.255.255.0", TypeOfInterfaces.Gigabit, 0, 1);
-            Routes rou02 = new Routes("0.0.0.0", "0.0.0.0", "10.10.10.0");
-            Routes rou03 = new Routes("10.20.20.0", "255.255.255.0", TypeOfInterfaces.Gigabit, 0, 1, "10.10.10.0");
+            Routes rou01 = new Routes(new IP ("10.10.10.0"), new IP("255.255.255.0"), new Ports(TypeOfInterfaces.FastEthernet, 0, 1));
+            Routes rou02 = new Routes(new IP("0.0.0.0"), new IP("0.0.0.0"), new IP("10.10.10.0"));
+            Routes rou03 = new Routes(new IP("10.20.20.0"), new IP("255.255.255.0"), new Ports(TypeOfInterfaces.FastEthernet, 0, 1), new IP("10.10.10.0"));
             // Router
             CiscoRouter routeur = new CiscoRouter("routeur001");
             routeur.AddBanner("Super Routeur")

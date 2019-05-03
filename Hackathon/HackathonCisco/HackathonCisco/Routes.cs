@@ -8,85 +8,49 @@ namespace HackathonCisco
 {
     class Routes
     {
-        private TypeOfInterfaces typeOfInterfaces;
-        private int preInterfaces = -1;
-        private int postInterfaces = -1;
+
+        // Attribut
+        private Ports port;
         private IP ip;
         private IP mask;
         private IP ipNext;
 
+        // Setter/Getter
         public IP IpNext { get => ipNext; set => ipNext = value; }
-        public int PostInterfaces { get => postInterfaces; set => postInterfaces = value; }
-        public int PreInterfaces { get => preInterfaces; set => preInterfaces = value; }
         public IP Mask { get => mask; set => mask = value; }
         public IP Ip { get => ip; set => ip = value; }
-        public TypeOfInterfaces TypeOfInterfaces { get => typeOfInterfaces; set => typeOfInterfaces = value; }
+        public Ports Port { get => port; set => port = value; }
 
-        public Routes(IP ip, IP mask, TypeOfInterfaces typeOfInterfaces, int postInterfaces, int preInterfaces, IP ipNext)
+        // Contructor
+        public Routes(IP ip, IP mask, Ports port, IP ipNext)
         {
             IpNext = ipNext;
-            PostInterfaces = postInterfaces;
-            PreInterfaces = preInterfaces;
             Mask = mask;
             Ip = ip;
-            TypeOfInterfaces = typeOfInterfaces;
+            this.Port = port;
         }
-
-        public Routes(string ip, string mask, TypeOfInterfaces typeOfInterfaces, int postInterfaces, int preInterfaces, string ipNext)
-        {
-            IpNext = new IP(ipNext);
-            PostInterfaces = postInterfaces;
-            PreInterfaces = preInterfaces;
-            Mask = new IP(mask);
-            Ip = new IP(ip);
-            TypeOfInterfaces = typeOfInterfaces;
-        }
-
         public Routes(IP ip, IP mask, IP ipNext)
         {
             IpNext = ipNext;
             Mask = mask;
             Ip = ip;
         }
-
-        public Routes(string ip, string mask, string ipNext)
-        {
-            IpNext = new IP(ipNext);
-            Mask = new IP(mask);
-            Ip = new IP(ip);
-        }
-
-        public Routes(IP ip, IP mask, TypeOfInterfaces typeOfInterfaces, int postInterfaces, int preInterfaces)
+        public Routes(IP ip, IP mask, Ports port)
         {
             Mask = mask;
             Ip = ip;
-            PostInterfaces = postInterfaces;
-            PreInterfaces = preInterfaces;
-            TypeOfInterfaces = typeOfInterfaces;
+            this.Port = port;
         }
 
-        public Routes(string ip, string mask, TypeOfInterfaces typeOfInterfaces, int postInterfaces, int preInterfaces)
+        // Methode to add
+        public Routes AddPort(Ports port)
         {
-            Mask = new IP(mask);
-            Ip = new IP(ip);
-            PostInterfaces = postInterfaces;
-            PreInterfaces = preInterfaces;
-            TypeOfInterfaces = typeOfInterfaces;
-        }
-
-        public Routes AddPreInterfaces(int preInterfaces)
-        {
-            this.PreInterfaces = preInterfaces;
+            this.Port = port;
             return this;
         }
-        public Routes AddPostInterfaces(int postInterfaces)
+        public Routes AddPort(TypeOfInterfaces typeOfPort, int prePort, int postPort)
         {
-            this.PostInterfaces = postInterfaces;
-            return this;
-        }
-        public Routes AddTypeOfInterfaces(TypeOfInterfaces typeOfInterfaces)
-        {
-            this.TypeOfInterfaces = typeOfInterfaces;
+            this.Port = new Ports(typeOfPort, prePort, postPort);
             return this;
         }
         public Routes AddIp(IP ip)
@@ -120,14 +84,14 @@ namespace HackathonCisco
             return this;
         }
 
-
+        // ToString Methode
         public new string ToString()
         {
             string res = "";
             res += "ip route " + this.Ip.ToString() + " " + this.Mask.ToString();
-            if (this.PreInterfaces != -1)
+            if (this.Port != null)
             {
-                res += " " + this.TypeOfInterfaces + " " + this.PreInterfaces + "/" + this.PostInterfaces;
+                res += " " + this.Port.ToString();
             }
             if (this.IpNext != null)
             {

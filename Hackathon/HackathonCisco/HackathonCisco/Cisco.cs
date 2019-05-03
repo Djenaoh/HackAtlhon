@@ -116,6 +116,7 @@ namespace HackathonCisco
             return this;
         }
 
+        // Methode to remove
         public void RemoveInterfaces()
         {
 

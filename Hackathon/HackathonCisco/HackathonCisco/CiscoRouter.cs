@@ -69,6 +69,10 @@ namespace HackathonCisco
             }
             return this;
         }
+        public void RemoveRoutes()
+        {
+
+        }
 
         // ToString Methode
         public new string ToString()
