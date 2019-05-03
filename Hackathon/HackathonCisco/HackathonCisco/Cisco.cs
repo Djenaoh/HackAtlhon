@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +120,13 @@ namespace HackathonCisco
             }
 
             return res;
+        }
+
+        public void SaveToTxt()
+        {
+            StreamWriter wr = new StreamWriter(MainWindow.PATH + MainWindow.FILE_NAME, false);
+            wr.WriteLine(SaveToConf());
+            wr.Close();
         }
     }
 }

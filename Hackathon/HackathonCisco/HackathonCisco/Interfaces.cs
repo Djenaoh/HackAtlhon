@@ -62,7 +62,7 @@
             this.Active = active;
             return this;
         }
-        public Interfaces AddDescription(string active)
+        public Interfaces AddDescription(string description)
         {
             this.Description = description;
             return this;

@@ -20,6 +20,9 @@ namespace HackathonCisco
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
+        public static string FILE_NAME = "scriptTEST.txt";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,15 +32,16 @@ namespace HackathonCisco
                 .AddDescription("Super reseau 2")
                 .AddIp("192.168.0.1")
                 .AddMask(new IP(255, 255, 0, 0))
-                .AddPreInterfaces(1)
-                .AddPostInterfaces(0);
+                .AddPreInterfaces(0)
+                .AddPostInterfaces(1);
             CiscoRouter routeur = new CiscoRouter("routeur001");
-            routeur.AddInterfaces(int01, int02)
+            routeur.AddInterfaces(int02)
                 .AddBanner("Super Routeur")
                 .AddNoIpDomaineLookup(true)
                 .AddSecureConsoleMode("cisco")
                 .AddSecurePriviledgeMode("cisco");
             MessageBox.Show(routeur.SaveToConf());
+            routeur.SaveToTxt();
 
         }
     }
