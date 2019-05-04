@@ -89,14 +89,8 @@ namespace HackathonCisco
         {
             string res = "";
             res += "ip route " + this.Ip.ToString() + " " + this.Mask.ToString();
-            if (this.Port != null)
-            {
-                res += " " + this.Port.ToString();
-            }
-            if (this.IpNext != null)
-            {
-                res += " " + this.IpNext.ToString();
-            }
+            res += this.Port != null ? " " + this.Port.ToString() : "";
+            res += this.IpNext != null ? " " + this.IpNext.ToString() : "";
             return res + "\n";
         }
     }

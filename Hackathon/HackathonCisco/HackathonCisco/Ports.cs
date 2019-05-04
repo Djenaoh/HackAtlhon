@@ -20,7 +20,12 @@ namespace HackathonCisco
         public TypeOfInterfaces TypeOfInterfaces { get => typeOfInterfaces; set => typeOfInterfaces = value; }
 
         // Contructor
-        public Ports() {}
+        public Ports()
+        {
+            PostInterfaces = -1;
+            PreInterfaces = -1;
+            TypeOfInterfaces = TypeOfInterfaces.undefined;
+        }
         public Ports(TypeOfInterfaces typeOfInterfaces, int preInterfaces, int postInterfaces)
         {
             PostInterfaces = postInterfaces;

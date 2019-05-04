@@ -3,6 +3,8 @@
     enum TypeOfInterfaces
     {
         FastEthernet,
-        Gigabit
+        Gigabit,
+        Serial,
+        undefined
     }
 }

@@ -28,11 +28,9 @@ namespace HackathonCisco
             InitializeComponent();
             // Interfaces
             Interfaces int01 = new Interfaces(new Ports(TypeOfInterfaces.FastEthernet, 0, 1), true, "Reseau A", new IP ("10.10.10.254"), new IP("255.255.255.0"));
-            Interfaces int02 = new Interfaces();
-            int02.AddPort(new Ports())
-                .AddDescription("Super reseau 2")
-                .AddIp("192.168.0.1")
-                .AddMask(new IP(255, 255, 0, 0));
+            Interfaces int02 = new Interfaces(new Ports(), false, "Super reseau 2", new IP("192.168.0.1"), new IP(255, 255, 0, 0));
+            // IPv6
+            IPv6 ipv601 = new IPv6("2a02:2788:614:1830:a532:86b0:ad1d:c42b", 64);
             // Routes
             Routes rou01 = new Routes(new IP ("10.10.10.0"), new IP("255.255.255.0"), new Ports(TypeOfInterfaces.FastEthernet, 0, 1));
             Routes rou02 = new Routes(new IP("0.0.0.0"), new IP("0.0.0.0"), new IP("10.10.10.0"));
@@ -47,6 +45,7 @@ namespace HackathonCisco
                 .AddRoutes(rou01, rou02, rou03);
 
             MessageBox.Show(routeur.ToString());
+            MessageBox.Show(ipv601.ToString());
             ReadWrite.SaveToTxt(routeur, PATH, FILE_NAME);
 
             //CiscoRouter routeur2 = new CiscoRouter();

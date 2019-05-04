@@ -70,12 +70,6 @@
             return this;
         }
 
-        // Methode to contruct the ToStrin
-        private string GetActiveString()
-        {
-            return this.Active ? "no shutdown" : "shutdown";
-        }
-
         // ToString Methode
         public new string ToString()
         {
@@ -83,7 +77,7 @@
             res += "interface " + this.Port.ToString() + "\n";
             res += "ip address " + this.Ip.ToString() + " " + this.Mask.ToString() + "\n";
             res += "description " + this.Description + "\n";
-            res += this.GetActiveString() + "\n";
+            res += this.Active ? "no shutdown\n" : "shutdown\n";
             return res;
         }
     }

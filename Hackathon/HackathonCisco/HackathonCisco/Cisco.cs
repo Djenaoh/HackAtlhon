@@ -33,10 +33,6 @@ namespace HackathonCisco
         public Cisco(string hostname){this.Hostname = hostname;}
 
         // Methode to contruct the ToString
-        private string GetNoIpDomaineLookup()
-        {
-            return this.NoIpDomaineLookup ? "no ip domain-lookup\n" : "";
-        }
         private string GetEnableSecureConsoleMode()
         {
             return this.EnableSecureConsoleMode ? "login\n" : "";
@@ -51,24 +47,6 @@ namespace HackathonCisco
                 res += "exit\n";
                 return res;
             } return "";
-        }
-        private string GetSecurePriviledgeMode()
-        {
-            if (this.SecurePriviledgeMode != null)
-            {
-                string res = "enable secret " + this.SecurePriviledgeMode + "\n";
-                return res;
-            }
-            return "";
-        }
-        private string GetBanner()
-        {
-            if (this.Banner != null)
-            {
-                string res = "banner motd #" + this.Banner + "#\n";
-                return res;
-            }
-            return "";
         }
 
         // Methode to add
@@ -128,10 +106,10 @@ namespace HackathonCisco
             string res = "enable\n";
             res += "configure terminal\n";
             res += "hostname " + hostname + "\n";
-            res += this.GetSecurePriviledgeMode();
+            res += this.SecurePriviledgeMode != null ? "enable secret " + this.SecurePriviledgeMode + "\n" : "";
             res += this.GetSecureConsoleMode();
-            res += this.GetBanner();
-            res += this.GetNoIpDomaineLookup();
+            res += this.Banner != null ? "banner motd #" + this.Banner + "#\n" : "";
+            res += this.NoIpDomaineLookup ? "no ip domain-lookup\n" : "";
             if (this.Interfaces != null)
             {
                 foreach (Interfaces inte in this.Interfaces)
