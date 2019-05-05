@@ -10,6 +10,10 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Fichier">
+                    <MenuItem x:Name="MenuFileNew" Header="_Nouveau">
+                        <MenuItem x:Name="MenuFileNewSwitch" Header="_Nouveau switch" Click="MenuFileNewSwitch_Click" />
+                        <MenuItem x:Name="MenuFileRouteur" Header="_Nouveau routeur" Click="MenuFileRouteur_Click" />
+                    </MenuItem>
                     <MenuItem x:Name="MenuFileOpen" Header="_Ouvrir" Click="MenuFileOpen_Click"/>
                     <MenuItem x:Name="MenuFileSave" Header="_Enregistrer" Click="MenuFileSave_Click"/>
                     <MenuItem x:Name="MenuFileClose" Header="_Fermer"/>
@@ -22,6 +26,25 @@
             </Menu>
             <StackPanel></StackPanel>
         </DockPanel>
-        <TextBox Name="txtEditor" Margin="154,95,162,74" />
+        <Grid Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <CheckBox Grid.Row="1" Grid.Column="0" Margin="2,6,2,0" Grid.RowSpan="2"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Hostname"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="Password"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="Comment"/>
+            <TextBox x:Name="TextBoxHostname" Grid.Column="2" Grid.Row="0" Margin="3" KeyDown="TextBoxHostname_KeyDown" />
+            <TextBox x:Name="TextBoxPassword" Grid.Column="2" Grid.Row="1" Margin="3" />
+            <TextBox Grid.Column="2" Grid.Row="2" Margin="3" />
+        </Grid>
     </Grid>
 </Window>

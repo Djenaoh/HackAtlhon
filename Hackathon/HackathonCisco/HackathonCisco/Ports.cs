@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HackathonCisco
 {
-    class Ports
+    public class Ports
     {
 
         // Attribut

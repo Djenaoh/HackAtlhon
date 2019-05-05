@@ -1,6 +1,6 @@
 ﻿namespace HackathonCisco
 {
-    enum TypeOfInterfaces
+    public enum TypeOfInterfaces
     {
         FastEthernet,
         Gigabit,

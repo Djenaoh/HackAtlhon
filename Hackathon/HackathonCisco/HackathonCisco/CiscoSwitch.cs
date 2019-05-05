@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HackathonCisco
 {
-    class CiscoSwitch : Cisco
+    public class CiscoSwitch : Cisco
     {
 
         // Contructor
@@ -53,7 +53,7 @@ namespace HackathonCisco
         public new string ToString()
         {
             string res = "";
-            return base.ToString() + res;
+            return "! switch\n" + base.ToString() + res;
         }
     }
 }

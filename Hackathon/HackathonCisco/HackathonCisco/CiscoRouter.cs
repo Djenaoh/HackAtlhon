@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HackathonCisco
 {
-    class CiscoRouter : Cisco
+    public class CiscoRouter : Cisco
     {
 
         // Attribut
@@ -85,7 +85,7 @@ namespace HackathonCisco
                     res += roue.ToString();
                 }
             }
-            return base.ToString() + res;
+            return "! routeur\n" + base.ToString() + res;
         }
 
     }

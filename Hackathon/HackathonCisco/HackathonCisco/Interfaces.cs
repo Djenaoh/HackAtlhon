@@ -1,6 +1,6 @@
 ﻿namespace HackathonCisco
 {
-    class Interfaces
+    public class Interfaces
     {
 
         // Attribut

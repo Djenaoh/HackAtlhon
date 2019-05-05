@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HackathonCisco
 {
-    class ReadWrite
+    public class ReadWrite
     {
         // Reading/Writing Methode
         public static void SaveToTxt(CiscoSwitch ob, string path, string fileName, bool append = false)
@@ -23,7 +23,11 @@ namespace HackathonCisco
             wr.Close();
         }
 
-        public static void ReadFromTxt(CiscoRouter ob, string path, string fileName)
+        public static void ReadFromTxt(CiscoSwitch ob, string path, string fileName)
+        {
+        }
+
+            public static void ReadFromTxt(CiscoRouter ob, string path, string fileName)
         {
             if (File.Exists(path + fileName))
             {

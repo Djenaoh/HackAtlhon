@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HackathonCisco
 {
-    class Cisco
+    public class Cisco
     {
 
         // Attribut

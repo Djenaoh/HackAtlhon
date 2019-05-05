@@ -2,7 +2,7 @@
 
 namespace HackathonCisco
 {
-    class IP
+    public class IP
     {
 
         // Attribut
