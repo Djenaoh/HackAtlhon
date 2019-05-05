@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Fichier">
+                    <MenuItem x:Name="MenuFileOpen" Header="_Ouvrir" Click="MenuFileOpen_Click"/>
+                    <MenuItem x:Name="MenuFileSave" Header="_Enregistrer" Click="MenuFileSave_Click"/>
+                    <MenuItem x:Name="MenuFileClose" Header="_Fermer"/>
+                    <Separator/>
+                    <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Aide">
+                    <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+        <TextBox Name="txtEditor" Margin="154,95,162,74" />
     </Grid>
 </Window>
