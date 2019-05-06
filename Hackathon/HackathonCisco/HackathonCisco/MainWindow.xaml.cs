@@ -30,6 +30,7 @@ namespace HackathonCisco
         public MainWindow()
         {
             InitializeComponent();
+            Clear();
             // Interfaces
             Interfaces int01 = new Interfaces(new Ports(TypeOfInterfaces.FastEthernet, 0, 1), true, "Reseau A", new IP ("10.10.10.254"), new IP("255.255.255.0"));
             Interfaces int02 = new Interfaces(new Ports(), false, "Super reseau 2", new IP("192.168.0.1"), new IP(255, 255, 0, 0));
@@ -87,15 +88,17 @@ namespace HackathonCisco
 
         private void MenuFileNewSwitch_Click(object sender, RoutedEventArgs e)
         {
-            cRouteur = null;
+            Clear();
+            Unlock();
             cSwitch = new CiscoSwitch();
 
         }
 
         private void MenuFileRouteur_Click(object sender, RoutedEventArgs e)
         {
+            Clear();
+            Unlock();
             cRouteur = new CiscoRouter();
-            cSwitch = null;
 
         }
 
@@ -103,8 +106,68 @@ namespace HackathonCisco
         {
             if (cRouteur != null)
                 cRouteur.AddHostname(TextBoxHostname.Text);
-            else
+            else if (cSwitch != null)
                 cSwitch.AddHostname(TextBoxHostname.Text);
+        }
+
+        private void MenuFileClose_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
+
+        }
+
+        private void Clear()
+        {
+            cRouteur = null;
+            cSwitch  = null;
+            foreach (Control ctl in containerCanvas.Children) // Clear , lock all CheckBox and TextBox
+            {
+                if (ctl.GetType() == typeof(CheckBox))
+                {
+                    ((CheckBox)ctl).IsChecked = false;
+                    ((CheckBox)ctl).IsEnabled = false;
+                }
+                if (ctl.GetType() == typeof(TextBox))
+                {
+                    ((TextBox)ctl).IsEnabled = false;
+                    ((TextBox)ctl).Text = String.Empty;
+                }
+            }
+        }
+
+        private void Unlock()
+        {
+            foreach (Control ctl in containerCanvas.Children)
+            {
+                if (ctl.GetType() == typeof(TextBox))
+                    ((TextBox)ctl).IsEnabled = true;
+                if (ctl.GetType() == typeof(CheckBox))
+                    ((CheckBox)ctl).IsEnabled = true;
+                }
+        }
+
+        private void CheckBoxPasswordConsole_Checked(object sender, RoutedEventArgs e)
+        {
+                if (cRouteur != null)
+                    cRouteur.AddEnableSecureConsoleMode(Convert.ToBoolean(CheckBoxPasswordConsole.IsChecked));
+                else if (cSwitch != null)
+                    cSwitch.AddEnableSecureConsoleMode(Convert.ToBoolean(CheckBoxPasswordConsole.IsChecked));
+        }
+
+        private void TextBoxPasswordConsole_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (cRouteur != null)
+                cRouteur.AddSecureConsoleMode(TextBoxPasswordConsole.Text);
+            else if (cSwitch != null)
+                cSwitch.AddSecureConsoleMode(TextBoxPasswordConsole.Text);
+        }
+
+        private void TextBoxPasswordPriviledge_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (cRouteur != null)
+                cRouteur.AddSecurePriviledgeMode(TextBoxPasswordPriviledge.Text);
+            else if (cSwitch != null)
+                cSwitch.AddSecurePriviledgeMode(TextBoxPasswordPriviledge.Text);
         }
     }
 }

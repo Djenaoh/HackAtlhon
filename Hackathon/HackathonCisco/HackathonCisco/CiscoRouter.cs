@@ -47,7 +47,7 @@ namespace HackathonCisco
         }
         public new CiscoRouter AddEnableSecureConsoleMode(bool enableSecureConsoleMode)
         {
-            this.AddEnableSecureConsoleMode(enableSecureConsoleMode);
+            base.AddEnableSecureConsoleMode(enableSecureConsoleMode);
             return this;
         }
         public new CiscoRouter AddNoIpDomaineLookup(bool noIpDomaineLookup)
