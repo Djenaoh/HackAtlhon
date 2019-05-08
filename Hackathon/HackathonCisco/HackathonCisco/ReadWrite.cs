@@ -27,7 +27,7 @@ namespace HackathonCisco
         {
         }
 
-            public static void ReadFromTxt(CiscoRouter ob, string path, string fileName)
+        public static void ReadFromTxt(CiscoRouter ob, string path, string fileName)
         {
             if (File.Exists(path + fileName))
             {

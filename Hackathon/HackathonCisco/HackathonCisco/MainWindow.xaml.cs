@@ -52,7 +52,7 @@ namespace HackathonCisco
 
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
         {
-            cRouteur = new CiscoRouter();
+            Unlock();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt";
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -61,10 +61,12 @@ namespace HackathonCisco
                 string firstLine = File.ReadAllLines(openFileDialog.FileName).Skip(0).Take(1).First(); //readFirstLine
                 if (firstLine == "! routeur")
                 {
+                    cRouteur = new CiscoRouter();
                     ReadWrite.ReadFromTxt(cRouteur, System.IO.Path.GetDirectoryName(openFileDialog.FileName), openFileDialog.FileName);
                 }
                 else if (firstLine == "! switch")
                 {
+                    cSwitch = new CiscoSwitch();
                     ReadWrite.ReadFromTxt(cSwitch, System.IO.Path.GetDirectoryName(openFileDialog.FileName), openFileDialog.FileName);
                 }
             }

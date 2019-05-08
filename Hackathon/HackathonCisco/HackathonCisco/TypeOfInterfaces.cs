@@ -5,6 +5,7 @@
         FastEthernet,
         Gigabit,
         Serial,
+        FrameRelay,
         undefined
     }
 }
