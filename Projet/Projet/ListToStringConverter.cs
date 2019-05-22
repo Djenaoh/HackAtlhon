@@ -15,6 +15,8 @@ namespace Projet
         {
             if (targetType != typeof(string))
                 throw new InvalidOperationException("The target must be a String");
+            if (value == null)
+                return "none";
             return String.Join(", ", ((List<string>)value).ToArray());
         }
 

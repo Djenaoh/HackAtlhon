@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Projet
 {
     [Serializable()]
-    class Item
+    public class Item
     {
 
         string title;
@@ -16,7 +16,7 @@ namespace Projet
         int year;
         int rating;
         string image;
-        List<Review> lstReviews;
+        List<List<string>> lstReviews;
         List<string> lstDirectors;
         List<string> lstWriters;
         List<string> lstStars;
@@ -27,7 +27,7 @@ namespace Projet
         public int Rating { get => rating; set => rating = value; }
         public string Image { get => image; set => image = value; }
         public int Year { get => year; set => year = value; }
-        public List<Review> LstReviews { get => lstReviews; set => lstReviews = value; }
+        public List<List<string>> LstReviews { get => lstReviews; set => lstReviews = value; }
         public List<EnumGenre> LstGenders { get => lstGenders; set => lstGenders = value; }
         public DateTime Date { get => date; set => date = value; }
         public List<string> LstDirectors { get => lstDirectors; set => lstDirectors = value; }
@@ -39,7 +39,7 @@ namespace Projet
             Date = DateTime.Now;
         }
 
-        public Item(string title, string description, int rating, string image, int year, List<Review> lstReviews, List<EnumGenre> lstGenders, DateTime date, List<string> lstDirectors, List<string> lstWriters, List<string> lstStars)
+        public Item(string title, string description, int rating, string image, int year, List<List<string>> lstReviews, List<EnumGenre> lstGenders, DateTime date, List<string> lstDirectors, List<string> lstWriters, List<string> lstStars)
         {
             Title = title;
             Description = description;
@@ -70,11 +70,11 @@ namespace Projet
             this.Image = MainWindow.PATH + e;
             return this;
         }
-        public Item addReviews(params Review[] e)
+        public Item addReviews(params List<string>[] e)
         {
             if (this.LstReviews == null)
             {
-                lstReviews = new List<Review>();
+                lstReviews = new List<List<string>>();
             }
             for (int i = 0; i < e.Length; i++)
             {
@@ -146,19 +146,5 @@ namespace Projet
             return this.Title;
         }
     }
-
-    internal class Review
-    {
-        string tilte;
-        string text;
-
-        public string Text { get => text; set => text = value; }
-        public string Tilte { get => tilte; set => tilte = value; }
-
-        public Review(string text, string tilte)
-        {
-            Text = text;
-            Tilte = tilte;
-        }
-    }
+    
 }

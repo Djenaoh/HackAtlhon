@@ -17,9 +17,12 @@
                 <MenuItem Header="_Fichier">
                     <MenuItem x:Name="MenuFileOpen" Header="_Ouvrir" Click="MenuFileOpen_Click"/>
                     <MenuItem x:Name="MenuFileSave" Header="_Enregistrer" Click="MenuFileSave_Click"/>
-                    <MenuItem x:Name="MenuFileClose" Header="_Fermer"/>
+                    <MenuItem x:Name="MenuFileClose" Header="_Fermer" Click="MenuFileClose_Click"/>
                     <Separator/>
                     <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Edition">
+                    <MenuItem x:Name="MenuAddMovie" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
@@ -43,7 +46,7 @@
                 <DataGridTextColumn Header="Titre" Width="Auto"  Binding="{Binding Title}"/>
                 <DataGridTextColumn Header="Annee" Width="45" Binding="{Binding Year}"/>
                 <DataGridTextColumn Header="Directors" Width="Auto" Binding="{Binding LstDirectors, Converter={StaticResource ListToStringConverter}}"/>
-                <DataGridTextColumn Header="Writesr" Width="Auto" Binding="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}"/>
+                <DataGridTextColumn Header="Writers" Width="Auto" Binding="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}"/>
                 <DataGridTextColumn Header="Stars" Width="Auto" Binding="{Binding LstStars, Converter={StaticResource ListToStringConverter}}"/>
                 <DataGridTextColumn Header="Rating" Width="45" Binding="{Binding Rating}"/>
             </DataGrid.Columns>

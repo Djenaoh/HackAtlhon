@@ -92,7 +92,7 @@ namespace Projet
                 .addRating(5)
                 .addImage("/Image/BigLebowski.jpg")
                 .addDescription("Jeff \"The Dude\" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.")
-                .addReviews(new Review("Greatest movie ever made.", "With the combination of the writing of the Coen brothers and the Cinematography of Roger Deakins, they created a film as beautiful as it is funny. The Coen brothers consistently impress me with their ability to write an interesting story with fascinating yet quirky characters. Without resorting to gratuitous sexual scenes like many other writer/directors of R rated films the Coen brothers manage to add the right amount of language and violence that is necessary to the story without it becoming the only reason for watching. 'The Big Lebowski' has so many clever and hilarious lines that you have to watch it over and over again. "))
+                .addReviews(new List<string>(new string[] { "Greatest movie ever made.", "With the combination of the writing of the Coen brothers and the Cinematography of Roger Deakins, they created a film as beautiful as it is funny. The Coen brothers consistently impress me with their ability to write an interesting story with fascinating yet quirky characters. Without resorting to gratuitous sexual scenes like many other writer/directors of R rated films the Coen brothers manage to add the right amount of language and violence that is necessary to the story without it becoming the only reason for watching. 'The Big Lebowski' has so many clever and hilarious lines that you have to watch it over and over again. " }))
                 .addDirectors("Joel Coen", "Ethan Coen")
                 .addStars("Jeff Bridges", "John Goodman", "Julianne Moore")
                 .addWriters("Ethan Coen", "Joel Coen");
@@ -103,5 +103,43 @@ namespace Projet
         {
             lstMovies.Clear();
         }
+
+        private void MenuFileClose_Click(object sender, RoutedEventArgs e)
+        {
+            lstMovies.Clear();
+        }
+
+        private void MenuAddMovie_Click(object sender, RoutedEventArgs e)
+        {
+            AddEdit fenetre02 = new AddEdit();
+            if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
+            {
+                lstMovies.Add(fenetre02.ReturnData());
+            }
+            else // Annuler
+            {
+            }
+        }
+
+      /*  private void BtnModifierElement_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataGridList.SelectedItems.Count == 1)
+            {
+                Personne per = DataGridList.Items[DataGridList.SelectedIndex] as Personne;
+                AjoutEdition fenetre02 = new AjoutEdition(per);
+                if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
+                {
+                    listing.Remove(per);
+                    listing.Add(fenetre02.RecupDonneesPersonne());
+                }
+                else // Annuler
+                {
+                }
+            }
+            else // Pas d'item selectionner dans la grid
+            {
+                MessageBox.Show("Plusieur elements selectioner");
+            }
+        }*/
     }
 }
