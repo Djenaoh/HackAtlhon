@@ -7,6 +7,7 @@
         Comedie,
         Animation,
         Fantastique,
-        Horreur
+        Horreur,
+        Crime
     }
 }

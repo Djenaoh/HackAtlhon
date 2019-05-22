@@ -7,41 +7,51 @@ using System.Threading.Tasks;
 namespace Projet
 {
     [Serializable()]
-    public class Item
+    class Item
     {
 
         string title;
         string description;
-        List<EnumGenre> lstGender;
+        List<EnumGenre> lstGenders;
         int year;
-        int rate;
+        int rating;
         string image;
-        List<string> lstReview;
+        List<Review> lstReviews;
+        List<string> lstDirectors;
+        List<string> lstWriters;
+        List<string> lstStars;
         DateTime date;
 
         public string Title { get => title; set => title = value; }
         public string Description { get => description; set => description = value; }
-        public int Rate { get => rate; set => rate = value; }
+        public int Rating { get => rating; set => rating = value; }
         public string Image { get => image; set => image = value; }
         public int Year { get => year; set => year = value; }
-        public List<string> Review { get => lstReview; set => lstReview = value; }
-        public List<EnumGenre> Gender { get => lstGender; set => lstGender = value; }
+        public List<Review> LstReviews { get => lstReviews; set => lstReviews = value; }
+        public List<EnumGenre> LstGenders { get => lstGenders; set => lstGenders = value; }
         public DateTime Date { get => date; set => date = value; }
+        public List<string> LstDirectors { get => lstDirectors; set => lstDirectors = value; }
+        public List<string> LstWriters { get => lstWriters; set => lstWriters = value; }
+        public List<string> LstStars { get => lstStars; set => lstStars = value; }
 
         public Item()
         {
             Date = DateTime.Now;
         }
 
-        public Item(string title, string description, int rate, string image, int year, List<string> review, List<EnumGenre> gender)
+        public Item(string title, string description, int rating, string image, int year, List<Review> lstReviews, List<EnumGenre> lstGenders, DateTime date, List<string> lstDirectors, List<string> lstWriters, List<string> lstStars)
         {
             Title = title;
             Description = description;
-            Rate = rate;
-            Image = image + MainWindow.PATH;
+            Rating = rating;
+            Image = MainWindow.PATH + image;
             Year = year;
-            Review = review;
-            Gender = gender;
+            LstReviews = lstReviews;
+            LstGenders = lstGenders;
+            Date = date;
+            LstDirectors = lstDirectors;
+            LstWriters = lstWriters;
+            LstStars = lstStars;
             Date = DateTime.Now;
         }
 
@@ -57,30 +67,66 @@ namespace Projet
         }
         public Item addImage(string e)
         {
-            this.Image = e + MainWindow.PATH;
+            this.Image = MainWindow.PATH + e;
             return this;
         }
-        public Item addReview(params string[] e)
+        public Item addReviews(params Review[] e)
         {
-            if (this.Review == null)
+            if (this.LstReviews == null)
             {
-                lstReview = new List<string>();
+                lstReviews = new List<Review>();
             }
             for (int i = 0; i < e.Length; i++)
             {
-                this.Review.Add(e[i]);
+                this.LstReviews.Add(e[i]);
             }
             return this;
         }
-        public Item addGerne(params EnumGenre[] e)
+        public Item addGenres(params EnumGenre[] e)
         {
-            if (this.Gender == null)
+            if (this.LstGenders == null)
             {
-                lstGender = new List<EnumGenre>();
+                lstGenders = new List<EnumGenre>();
             }
             for (int i = 0; i < e.Length; i++)
             {
-                this.Gender.Add(e[i]);
+                this.LstGenders.Add(e[i]);
+            }
+            return this;
+        }
+        public Item addDirectors(params string[] e)
+        {
+            if (this.LstDirectors == null)
+            {
+                lstDirectors = new List<string>();
+            }
+            for (int i = 0; i < e.Length; i++)
+            {
+                this.LstDirectors.Add(e[i]);
+            }
+            return this;
+        }
+        public Item addWriters(params string[] e)
+        {
+            if (this.LstWriters == null)
+            {
+                lstWriters = new List<string>();
+            }
+            for (int i = 0; i < e.Length; i++)
+            {
+                this.LstWriters.Add(e[i]);
+            }
+            return this;
+        }
+        public Item addStars(params string[] e)
+        {
+            if (this.LstStars == null)
+            {
+                lstStars = new List<string>();
+            }
+            for (int i = 0; i < e.Length; i++)
+            {
+                this.LstStars.Add(e[i]);
             }
             return this;
         }
@@ -89,15 +135,30 @@ namespace Projet
             this.Year = e;
             return this;
         }
-        public Item addRate(int e)
+        public Item addRating(int e)
         {
-            this.Rate = e;
+            this.Rating = e;
             return this;
         }
 
         public override string ToString()
         {
             return this.Title;
+        }
+    }
+
+    internal class Review
+    {
+        string tilte;
+        string text;
+
+        public string Text { get => text; set => text = value; }
+        public string Tilte { get => tilte; set => tilte = value; }
+
+        public Review(string text, string tilte)
+        {
+            Text = text;
+            Tilte = tilte;
         }
     }
 }

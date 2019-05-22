@@ -86,14 +86,22 @@ namespace Projet
 
         private void AddLebowski_Click(object sender, RoutedEventArgs e)
         {
-            Item lebowski = new Item().addTitle("Big Lebowski")
+            Item lebowski = new Item().addTitle("The Big Lebowski")
                 .addYear(1998)
-                .addGerne(EnumGenre.Comedie)
-                .addRate(5)
-                .addImage("Image/BigLebowski.jpg")
+                .addGenres(EnumGenre.Comedie, EnumGenre.Crime)
+                .addRating(5)
+                .addImage("/Image/BigLebowski.jpg")
                 .addDescription("Jeff \"The Dude\" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.")
-                .addReview("Greatest movie ever made. -- With the combination of the writing of the Coen brothers and the Cinematography of Roger Deakins, they created a film as beautiful as it is funny. The Coen brothers consistently impress me with their ability to write an interesting story with fascinating yet quirky characters. Without resorting to gratuitous sexual scenes like many other writer/directors of R rated films the Coen brothers manage to add the right amount of language and violence that is necessary to the story without it becoming the only reason for watching. 'The Big Lebowski' has so many clever and hilarious lines that you have to watch it over and over again. ");
+                .addReviews(new Review("Greatest movie ever made.", "With the combination of the writing of the Coen brothers and the Cinematography of Roger Deakins, they created a film as beautiful as it is funny. The Coen brothers consistently impress me with their ability to write an interesting story with fascinating yet quirky characters. Without resorting to gratuitous sexual scenes like many other writer/directors of R rated films the Coen brothers manage to add the right amount of language and violence that is necessary to the story without it becoming the only reason for watching. 'The Big Lebowski' has so many clever and hilarious lines that you have to watch it over and over again. "))
+                .addDirectors("Joel Coen", "Ethan Coen")
+                .addStars("Jeff Bridges", "John Goodman", "Julianne Moore")
+                .addWriters("Ethan Coen", "Joel Coen");
             lstMovies.Add(lebowski);
+        }
+
+        private void DeleteDataGrid_Click(object sender, RoutedEventArgs e)
+        {
+            lstMovies.Clear();
         }
     }
 }

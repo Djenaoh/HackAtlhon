@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Window.Resources>
         <!-- Binding -->
         <CollectionViewSource x:Key="Item" Source="{Binding}"/>
+        <local:ListToStringConverter x:Key="ListToStringConverter"/>
     </Window.Resources>
     <Grid>
         <DockPanel>
@@ -25,17 +26,43 @@
                 </MenuItem>
                 <MenuItem Header="_DEV_TOOL">
                     <MenuItem x:Name="AddLebowski" Header="_Add The Big Lebowski" Click="AddLebowski_Click"/>
+                    <MenuItem x:Name="DeleteDataGrid" Header="_Reset the DataGrid" Click="DeleteDataGrid_Click"/>
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>
         </DockPanel>
-        <DataGrid x:Name="DataGridList" HorizontalAlignment="Left" Height="301" Margin="10,47,0,0" VerticalAlignment="Top" Width="772" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}">
+        <DataGrid x:Name="DataGridList" HorizontalAlignment="Left" Height="510" Margin="10,24,0,0" VerticalAlignment="Top" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}" Width="1172">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Image" Width="25*" Binding="{Binding Image}"/>
-                <DataGridTextColumn Header="Titre" Width="25*" Binding="{Binding Title}"/>
-                <DataGridTextColumn Header="Description" Width="25*" Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="Genre" Width="25*" Binding="{Binding Gender}"/>
+                <DataGridTemplateColumn Header="Cover" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Height="60" Width="40" Source="{Binding Image}"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Titre" Width="Auto"  Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Annee" Width="45" Binding="{Binding Year}"/>
+                <DataGridTextColumn Header="Directors" Width="Auto" Binding="{Binding LstDirectors, Converter={StaticResource ListToStringConverter}}"/>
+                <DataGridTextColumn Header="Writesr" Width="Auto" Binding="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}"/>
+                <DataGridTextColumn Header="Stars" Width="Auto" Binding="{Binding LstStars, Converter={StaticResource ListToStringConverter}}"/>
+                <DataGridTextColumn Header="Rating" Width="45" Binding="{Binding Rating}"/>
             </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Description: " VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Description}" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Avis: " VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Description}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
         
     </Grid>
