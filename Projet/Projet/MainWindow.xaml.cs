@@ -31,13 +31,11 @@ namespace Projet
         // Attr
         ObservableCollection<Item> lstMovies = new ObservableCollection<Item>();
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
-        string fileName = "database.txt";
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = lstMovies;
-            load();
         }
 
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
@@ -47,7 +45,7 @@ namespace Projet
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
-                return;
+                deSerialize(openFileDialog.FileName);
             }
         }
 
@@ -58,7 +56,7 @@ namespace Projet
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (saveFileDialog.ShowDialog() == true)
             {
-                return;
+                toSerialize(saveFileDialog.FileName);
             }
         }
 
@@ -67,30 +65,35 @@ namespace Projet
             Environment.Exit(0);
         }
 
-
-        private void load()
-        {
-            Item test = new Item().addTitle("Kill Bill")
-                .addGerne(EnumGenre.Action);
-            lstMovies.Add(test);
-        }
-
-        public void toSerialize()
+        public void toSerialize(string fileName)
         {
             FileStream stream = File.Create(fileName);
             var formatter = new BinaryFormatter();
             formatter.Serialize(stream, lstMovies);
             stream.Close();
         }
-        public void deSerialize()
+        public void deSerialize(string fileName)
         {
             var formatter = new BinaryFormatter();
             FileStream stream = File.OpenRead(fileName);
-            Console.WriteLine("Deserializing vector");
-            var u = (List<Item>)formatter.Deserialize(stream);
-            Console.WriteLine(u);
+            ObservableCollection<Item> lstTmp = (ObservableCollection<Item>)formatter.Deserialize(stream);
             stream.Close();
+            foreach(Item item in lstTmp)
+            {
+                lstMovies.Add(item);
+            }
         }
 
+        private void AddLebowski_Click(object sender, RoutedEventArgs e)
+        {
+            Item lebowski = new Item().addTitle("Big Lebowski")
+                .addYear(1998)
+                .addGerne(EnumGenre.Comedie)
+                .addRate(5)
+                .addImage("Image/BigLebowski.jpg")
+                .addDescription("Jeff \"The Dude\" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.")
+                .addReview("Greatest movie ever made. -- With the combination of the writing of the Coen brothers and the Cinematography of Roger Deakins, they created a film as beautiful as it is funny. The Coen brothers consistently impress me with their ability to write an interesting story with fascinating yet quirky characters. Without resorting to gratuitous sexual scenes like many other writer/directors of R rated films the Coen brothers manage to add the right amount of language and violence that is necessary to the story without it becoming the only reason for watching. 'The Big Lebowski' has so many clever and hilarious lines that you have to watch it over and over again. ");
+            lstMovies.Add(lebowski);
+        }
     }
 }

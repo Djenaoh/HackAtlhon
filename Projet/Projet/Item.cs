@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Projet
 {
+    [Serializable()]
     public class Item
     {
 
         string title;
         string description;
-        List<EnumGenre> gender;
+        List<EnumGenre> lstGender;
         int year;
         int rate;
         string image;
-        List<string> review;
+        List<string> lstReview;
         DateTime date;
 
         public string Title { get => title; set => title = value; }
@@ -23,8 +24,8 @@ namespace Projet
         public int Rate { get => rate; set => rate = value; }
         public string Image { get => image; set => image = value; }
         public int Year { get => year; set => year = value; }
-        public List<string> Review { get => review; set => review = value; }
-        public List<EnumGenre> Gender { get => gender; set => gender = value; }
+        public List<string> Review { get => lstReview; set => lstReview = value; }
+        public List<EnumGenre> Gender { get => lstGender; set => lstGender = value; }
         public DateTime Date { get => date; set => date = value; }
 
         public Item()
@@ -63,7 +64,7 @@ namespace Projet
         {
             if (this.Review == null)
             {
-                review = new List<string>();
+                lstReview = new List<string>();
             }
             for (int i = 0; i < e.Length; i++)
             {
@@ -75,7 +76,7 @@ namespace Projet
         {
             if (this.Gender == null)
             {
-                gender = new List<EnumGenre>();
+                lstGender = new List<EnumGenre>();
             }
             for (int i = 0; i < e.Length; i++)
             {

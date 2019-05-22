@@ -23,15 +23,18 @@
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
                 </MenuItem>
+                <MenuItem Header="_DEV_TOOL">
+                    <MenuItem x:Name="AddLebowski" Header="_Add The Big Lebowski" Click="AddLebowski_Click"/>
+                </MenuItem>
             </Menu>
             <StackPanel></StackPanel>
         </DockPanel>
         <DataGrid x:Name="DataGridList" HorizontalAlignment="Left" Height="301" Margin="10,47,0,0" VerticalAlignment="Top" Width="772" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Image" Width="50*" Binding="{Binding Image}"/>
-                <DataGridTextColumn Header="Tire" Width="25*" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Image" Width="25*" Binding="{Binding Image}"/>
+                <DataGridTextColumn Header="Titre" Width="25*" Binding="{Binding Title}"/>
                 <DataGridTextColumn Header="Description" Width="25*" Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="Genre" Width="50*" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Genre" Width="25*" Binding="{Binding Gender}"/>
             </DataGrid.Columns>
         </DataGrid>
         
