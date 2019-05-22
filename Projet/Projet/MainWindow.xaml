@@ -6,7 +6,34 @@
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <!-- Binding -->
+        <CollectionViewSource x:Key="Item" Source="{Binding}"/>
+    </Window.Resources>
     <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Fichier">
+                    <MenuItem x:Name="MenuFileOpen" Header="_Ouvrir" Click="MenuFileOpen_Click"/>
+                    <MenuItem x:Name="MenuFileSave" Header="_Enregistrer" Click="MenuFileSave_Click"/>
+                    <MenuItem x:Name="MenuFileClose" Header="_Fermer"/>
+                    <Separator/>
+                    <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Aide">
+                    <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+        <DataGrid x:Name="DataGridList" HorizontalAlignment="Left" Height="301" Margin="10,47,0,0" VerticalAlignment="Top" Width="772" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Image" Width="50*" Binding="{Binding Image}"/>
+                <DataGridTextColumn Header="Tire" Width="25*" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Description" Width="25*" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Genre" Width="50*" Binding="{Binding Gender}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         
     </Grid>
 </Window>
