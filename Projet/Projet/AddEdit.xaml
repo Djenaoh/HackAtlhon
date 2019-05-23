@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="AjoutEdition" Height="483.884" Width="450.224">
     <Grid>
-        <Label x:Name="LabelTitle" Content="Titre:" HorizontalAlignment="Right" Margin="0,20,150,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelYear" Content="Année:" HorizontalAlignment="Right" Margin="0,60,150,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelGender" Content="Genre:" HorizontalAlignment="Right" Margin="0,100,150,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelRating" Content="Note:" HorizontalAlignment="Right" Margin="0,140,150,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelDirectors" Content="Directeurs:" HorizontalAlignment="Right" Margin="0,180,150,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelWritres" Content="Scenaristes:" HorizontalAlignment="Right" Margin="0,220,150,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelStars" Content="Acteurs:" HorizontalAlignment="Right" Margin="0,260,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelTitle" Content="Titre:" HorizontalAlignment="Left" Margin="220,20,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelYear" Content="Année:" HorizontalAlignment="Left" Margin="220,60,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelGender" Content="Genre:" HorizontalAlignment="Left" Margin="220,100,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelRating" Content="Note:" HorizontalAlignment="Left" Margin="220,140,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelDirectors" Content="Directeur:" HorizontalAlignment="Left" Margin="220,180,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelWritres" Content="Scenariste:" HorizontalAlignment="Left" Margin="220,220,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelStars" Content="Acteur:" HorizontalAlignment="Left" Margin="220,260,150,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelDescription" Content="Description:" HorizontalAlignment="Left" Margin="20,275,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxTitle" HorizontalAlignment="Right" Height="23" Margin="0,20,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <TextBox x:Name="TextBoxYear" HorizontalAlignment="Right" Height="23" Margin="0,60,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
