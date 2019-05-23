@@ -21,10 +21,16 @@ namespace Projet
     /// </summary>
     public partial class AddEdit : Window
     {
+        public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
         public AddEdit()
         {
+
             InitializeComponent();
             this.Title = "Ajouter";
+            img_icon_val.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_val.png"));
+            //img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
+            img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
+            img_icon_browse.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_browse.png"));
         }
         
         public AddEdit(Item movie)
