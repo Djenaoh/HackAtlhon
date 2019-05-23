@@ -30,6 +30,7 @@ namespace Projet
 
         // Attr
         ObservableCollection<Item> lstMovies = new ObservableCollection<Item>();
+        ObservableCollection<Wrapper> lstSeries = new ObservableCollection<Wrapper>();
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
 
         public MainWindow()
