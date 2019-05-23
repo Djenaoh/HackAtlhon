@@ -97,7 +97,7 @@ namespace Projet
         {
             Item lebowski = new Item().addTitle("The Big Lebowski")
                 .addYear(1998)
-                .addGenres(EnumGenre.Comedie, EnumGenre.Crime)
+                .addGenres("Comedie", "Crime")
                 .addRating(5)
                 .addImage("/Image/BigLebowski.jpg")
                 .addDescription("Jeff \"The Dude\" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.")

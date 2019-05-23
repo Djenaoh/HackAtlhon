@@ -45,6 +45,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Titre" Width="Auto"  Binding="{Binding Title}"/>
                 <DataGridTextColumn Header="Annee" Width="45" Binding="{Binding Year}"/>
+                <DataGridTextColumn Header="Genre" Width="45" Binding="{Binding LstGenders, Converter={StaticResource ListToStringConverter}}"/>
                 <DataGridTextColumn Header="Directors" Width="Auto" Binding="{Binding LstDirectors, Converter={StaticResource ListToStringConverter}}"/>
                 <DataGridTextColumn Header="Writers" Width="Auto" Binding="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}"/>
                 <DataGridTextColumn Header="Stars" Width="Auto" Binding="{Binding LstStars, Converter={StaticResource ListToStringConverter}}"/>

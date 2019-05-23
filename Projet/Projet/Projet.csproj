@@ -78,7 +78,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EnumGenre.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ListToStringConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">

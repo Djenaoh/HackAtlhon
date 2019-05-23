@@ -12,7 +12,7 @@ namespace Projet
 
         string title;
         string description;
-        List<EnumGenre> lstGenders;
+        List<string> lstGenders;
         int year;
         int rating;
         string image;
@@ -28,7 +28,7 @@ namespace Projet
         public string Image { get => image; set => image = value; }
         public int Year { get => year; set => year = value; }
         public List<List<string>> LstReviews { get => lstReviews; set => lstReviews = value; }
-        public List<EnumGenre> LstGenders { get => lstGenders; set => lstGenders = value; }
+        public List<string> LstGenders { get => lstGenders; set => lstGenders = value; }
         public DateTime Date { get => date; set => date = value; }
         public List<string> LstDirectors { get => lstDirectors; set => lstDirectors = value; }
         public List<string> LstWriters { get => lstWriters; set => lstWriters = value; }
@@ -39,7 +39,7 @@ namespace Projet
             Date = DateTime.Now;
         }
 
-        public Item(string title, string description, int rating, string image, int year, List<List<string>> lstReviews, List<EnumGenre> lstGenders, DateTime date, List<string> lstDirectors, List<string> lstWriters, List<string> lstStars)
+        public Item(string title, string description, int rating, string image, int year, List<List<string>> lstReviews, List<string> lstGenders, DateTime date, List<string> lstDirectors, List<string> lstWriters, List<string> lstStars)
         {
             Title = title;
             Description = description;
@@ -82,11 +82,11 @@ namespace Projet
             }
             return this;
         }
-        public Item addGenres(params EnumGenre[] e)
+        public Item addGenres(params string[] e)
         {
             if (this.LstGenders == null)
             {
-                lstGenders = new List<EnumGenre>();
+                lstGenders = new List<string>();
             }
             for (int i = 0; i < e.Length; i++)
             {

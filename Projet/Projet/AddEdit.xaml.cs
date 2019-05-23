@@ -24,11 +24,9 @@ namespace Projet
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
         public AddEdit()
         {
-
             InitializeComponent();
             this.Title = "Ajouter";
             img_icon_val.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_val.png"));
-            //img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
             img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
             img_icon_browse.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_browse.png"));
         }
@@ -68,14 +66,13 @@ namespace Projet
             string res = "Erreur(s):\n\n";
 
             int year = 0;
-            EnumGenre gender = EnumGenre.None;
+            string gender = "None";
             string title = "";
-            string description = "";
             int rating = 0;
 
             title = Convert.ToString(TextBoxTitle.Text);
             rating = ComboRating.SelectedIndex;
-            gender = MyConvert.stringToGender(ComboGender.SelectedItem.ToString());
+            gender = ComboGender.SelectionBoxItem.ToString();
             
             bool boolYear = Int32.TryParse(Convert.ToString(TextBoxYear.Text), out year);
 
@@ -119,11 +116,10 @@ namespace Projet
             }
 
             if (res != "Erreur(s):\n\n")
-                {
-                    MessageBox.Show(res);
-                return;
-                    
-                }
+            {
+                MessageBox.Show(res);
+                return;        
+            }
             tmp = new Item()
                  .addTitle(title)
                  .addDescription(TextBoxDescription.Text)
@@ -133,28 +129,18 @@ namespace Projet
                  .addStars(stringTolistString(TextBoxStars.Text))
                  .addWriters(stringTolistString(TextBoxWriters.Text))
                  .addYear(year);
-
             this.DialogResult = true;
         }
 
         private string[] stringTolistString(string e)
         {
-            string[] res = e.Split(',');
-            return res;
+            return e.Split(',');
         }
 
         private bool isValidString(string e)
         {
-            return true;
-            Regex regexItem = new Regex("^[a-zA-Z0-9 ]*$");
-            if (regexItem.IsMatch(e))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            Regex regexItem = new Regex("^[a-zA-Z0-9.,;:'\" ]*$");
+            return regexItem.IsMatch(e);
 
         }
 
