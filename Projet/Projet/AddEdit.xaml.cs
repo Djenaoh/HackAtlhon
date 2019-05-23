@@ -57,7 +57,7 @@ namespace Projet
 
         private void BtnValider_Click(object sender, RoutedEventArgs e)
         {
-            string res = "Erreur:\n";
+            string res = "Erreur(s):\n\n";
 
             int year = 0;
             EnumGenre gender = EnumGenre.None;
