@@ -5,14 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-        Title="AjoutEdition" Height="229.054" Width="269.932">
+        Title="AjoutEdition" Height="483.884" Width="450.224">
     <Grid>
-        <Label x:Name="Title2" Content="Titre" HorizontalAlignment="Left" Margin="30,20,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Year" Content="Annee" HorizontalAlignment="Left" Margin="30,60,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBoxTitle" HorizontalAlignment="Left" Height="23" Margin="100,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextBoxYear" HorizontalAlignment="Left" Height="23" Margin="100,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <Button x:Name="BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="30,153,0,0" VerticalAlignment="Top" Width="85" Click="BtnValider_Click"/>
-        <Button x:Name="BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="135,153,0,0" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2" Click="BtnAnnuler_Click"/>
+        <Label x:Name="LabelTitle" Content="Titre:" HorizontalAlignment="Right" Margin="0,20,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelYear" Content="Année:" HorizontalAlignment="Right" Margin="0,60,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelGender" Content="Genre:" HorizontalAlignment="Right" Margin="0,100,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelRating" Content="Note:" HorizontalAlignment="Right" Margin="0,140,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelDirectors" Content="Directeurs:" HorizontalAlignment="Right" Margin="0,180,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelWritres" Content="Scenaristes:" HorizontalAlignment="Right" Margin="0,220,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelStars" Content="Acteurs:" HorizontalAlignment="Right" Margin="0,260,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelDescription" Content="Description:" HorizontalAlignment="Left" Margin="20,275,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxTitle" HorizontalAlignment="Right" Height="23" Margin="0,20,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBoxYear" HorizontalAlignment="Right" Height="23" Margin="0,60,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="ComboGender" SelectedIndex="0"  HorizontalAlignment="Right" Height="23" Margin="0,100,20,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2">
+            <ComboBoxItem>None</ComboBoxItem>
+            <ComboBoxItem>Action</ComboBoxItem>
+            <ComboBoxItem>Drame</ComboBoxItem>
+            <ComboBoxItem>Comedie</ComboBoxItem>
+            <ComboBoxItem>Animation</ComboBoxItem>
+            <ComboBoxItem>Fantastique</ComboBoxItem>
+            <ComboBoxItem>Horreur</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="ComboRating" SelectedIndex="0" HorizontalAlignment="Right" Height="23" Margin="0,140,20,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2">
+            <ComboBoxItem>0</ComboBoxItem>
+            <ComboBoxItem>1</ComboBoxItem>
+            <ComboBoxItem>2</ComboBoxItem>
+            <ComboBoxItem>3</ComboBoxItem>
+            <ComboBoxItem>4</ComboBoxItem>
+            <ComboBoxItem>5</ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="TextBoxDirector" HorizontalAlignment="Right" Height="23" Margin="0,180,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBoxWriters" HorizontalAlignment="Right" Height="23" Margin="0,220,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBoxStars" HorizontalAlignment="Right" Height="23" Margin="0,260,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBoxDescription" HorizontalAlignment="Center" Height="92" Margin="0,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2"/>
+        <Image x:Name="ImageImage" HorizontalAlignment="Left" Height="240" Margin="30,20,0,0" VerticalAlignment="Top" Width="160" Grid.ColumnSpan="2"/>
+        <Button x:Name="BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="100,0,0,20" VerticalAlignment="Bottom" Width="85" Click="BtnValider_Click"/>
+        <Button x:Name="BtnAnnuler" Content="Annuler" HorizontalAlignment="Right" Margin="0,0,100,20" VerticalAlignment="Bottom" Width="85" Grid.ColumnSpan="2" Click="BtnAnnuler_Click"/>
+        <Button x:Name="BtnImage" Content="*" HorizontalAlignment="Left" Height="20" Margin="170,265,0,0" VerticalAlignment="Top" Width="20" Grid.ColumnSpan="2" Click="BtnImage_Click"/>
+        
 
     </Grid>
 </Window>
