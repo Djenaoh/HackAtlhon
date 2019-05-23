@@ -149,26 +149,14 @@ namespace Projet
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            // copier coller la methode edition
-        }
-
-   
-
-
-
-
-
-
-        /*  private void BtnModifierElement_Click(object sender, RoutedEventArgs e)
-          {
               if (DataGridList.SelectedItems.Count == 1)
               {
-                  Personne per = DataGridList.Items[DataGridList.SelectedIndex] as Personne;
-                  AjoutEdition fenetre02 = new AjoutEdition(per);
+                  Item movie = DataGridList.Items[DataGridList.SelectedIndex] as Item;
+                  AddEdit fenetre02 = new AddEdit(movie);
                   if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
                   {
-                      listing.Remove(per);
-                      listing.Add(fenetre02.RecupDonneesPersonne());
+                      lstMovies.Remove(movie);
+                    lstMovies.Add(fenetre02.ReturnData());
                   }
                   else // Annuler
                   {
@@ -178,6 +166,25 @@ namespace Projet
               {
                   MessageBox.Show("Plusieur elements selectioner");
               }
-          }*/
+          }
+
+        private void BtnFind_Click(object sender, RoutedEventArgs e)
+        {
+            int count = 0;
+            DataGridList.SelectedItems.Clear();
+            foreach (Item item in DataGridList.Items)
+            {
+                string[] tmp = item.Title.Split(' ');
+                foreach(string str in tmp)
+                {
+                    if (TextBoxFind.Text.ToLower() == str.ToLower())
+                    {
+                        DataGridList.SelectedItems.Add(item);
+                        count++;
+                    }
+                }
+            }
+            //MessageBox.Show("Nombre d'occurences : " + count);
+        }
     }
 }

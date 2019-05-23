@@ -35,6 +35,11 @@
         </DockPanel>
         <Image x:Name="img_logo" Margin="0,50,0,0" VerticalAlignment="Center" Stretch= "Uniform"  HorizontalAlignment="Center" />
         <DataGrid x:Name="DataGridList" Height="510" Margin="10,24,10,24" VerticalAlignment="Top" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}" Width="auto" Opacity="0.8">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="BtnEdit_Click"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Cover" Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
@@ -79,6 +84,8 @@
                 <Image x:Name="img_icon_add" Stretch="Fill" Height="109" Width="125"/>
             </Button>
         </Grid>
+        <TextBox x:Name="TextBoxFind" HorizontalAlignment="Left" Height="23" Margin="68,731,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="BtnFind" Content="Recherche" HorizontalAlignment="Left" Margin="220,731,0,0" VerticalAlignment="Top" Width="75" Click="BtnFind_Click"/>
     </Grid>
 
 

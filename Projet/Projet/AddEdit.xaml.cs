@@ -35,6 +35,25 @@ namespace Projet
         {
             InitializeComponent();
             this.Title = "Editer";
+            TextBoxTitle.Text = movie.Title;
+            TextBoxYear.Text = movie.Year.ToString();
+            TextBoxDescription.Text = movie.Description;
+            TextBoxDirector.Text = stringListToString(movie.LstDirectors);
+            TextBoxStars.Text = stringListToString(movie.LstStars);
+            TextBoxWriters.Text = stringListToString(movie.LstWriters);
+            ComboRating.SelectedIndex = movie.Rating;
+            ComboGender.SelectedItem = stringListToString(movie.LstGenders);
+            ImageImage.Source = new BitmapImage(new Uri(movie.Image));
+        }
+
+        private string stringListToString(List<string> lstE)
+        {
+            string res = "";
+            foreach(string e in lstE)
+            {
+                res += e + ",";
+            }
+            return res.Substring(0, res.Length - 1);
         }
 
         Item tmp;
