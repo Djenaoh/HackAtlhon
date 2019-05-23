@@ -73,40 +73,40 @@ namespace Projet
 
             if (TextBoxTitle.Text == "")
             {
-                res += "Le titre est obligatoire\n";
+                res += "-Le titre est obligatoire\n";
             }
             else if (!isValidString(TextBoxTitle.Text))
             {
-                res += "Le texte entré dans la partie Titre \"" + TextBoxTitle.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
+                res += "-Le texte entré dans la partie Titre \"" + TextBoxTitle.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
                 TextBoxTitle.Clear();
             }
             if (TextBoxYear.Text == "")
             {
-                res += "L'année est obligatoire\n";
+                res += "-L'année est obligatoire\n";
             }
             else if (!boolYear)
             {
-                res += "Le texte entré dans la partie Année  \"" + TextBoxYear.Text + "\" n'est pas correct. Veuillez entrer une année en nombre entier\n";
+                res += "-Le texte entré dans la partie Année  \"" + TextBoxYear.Text + "\" n'est pas correct. Veuillez entrer une année en nombre entier\n";
                 TextBoxYear.Clear();
             }
             if (!isValidString(TextBoxDirector.Text))
             {
-                res += "Le texte entré dans la partie Directeur \"" + TextBoxDirector.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
+                res += "-Le texte entré dans la partie Directeur \"" + TextBoxDirector.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
                 TextBoxDirector.Clear();
             }
             if (!isValidString(TextBoxStars.Text))
             {
-                res += "Le texte entré dans la partie Star \"" + TextBoxStars.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
+                res += "-Le texte entré dans la partie Star \"" + TextBoxStars.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
                 TextBoxStars.Clear();
             }
             if (!isValidString(TextBoxWriters.Text))
             {
-                res += "Le texte entré dans la partie Scénariste \"" + TextBoxWriters.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
+                res += "-Le texte entré dans la partie Scénariste \"" + TextBoxWriters.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
                 TextBoxWriters.Clear();
             }
             if (!isValidString(TextBoxDescription.Text))
             {
-                res += "Le texte entré dans la partie Description \"" + TextBoxDescription.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
+                res += "-Le texte entré dans la partie Description \"" + TextBoxDescription.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
                 TextBoxDescription.Clear();
             }
 
