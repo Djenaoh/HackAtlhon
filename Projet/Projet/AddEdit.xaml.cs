@@ -110,7 +110,7 @@ namespace Projet
                 TextBoxDescription.Clear();
             }
 
-            if (res != "Erreur:\n")
+            if (res != "Erreur(s):\n\n")
                 {
                     MessageBox.Show(res);
                 return;
