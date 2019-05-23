@@ -31,14 +31,16 @@ namespace Projet
         // Attr
         ObservableCollection<Item> lstMovies = new ObservableCollection<Item>();
         ObservableCollection<Wrapper> lstSeries = new ObservableCollection<Wrapper>();
+        
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
-
         public MainWindow()
         {
             InitializeComponent();
+            
             DataContext = lstMovies;
-        }
 
+        }
+            
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -79,7 +81,7 @@ namespace Projet
             FileStream stream = File.OpenRead(fileName);
             ObservableCollection<Item> lstTmp = (ObservableCollection<Item>)formatter.Deserialize(stream);
             stream.Close();
-            foreach(Item item in lstTmp)
+            foreach (Item item in lstTmp)
             {
                 lstMovies.Add(item);
             }
@@ -122,25 +124,54 @@ namespace Projet
             }
         }
 
-      /*  private void BtnModifierElement_Click(object sender, RoutedEventArgs e)
+        private void Btn_delete_Click(object sender, RoutedEventArgs e)
         {
-            if (DataGridList.SelectedItems.Count == 1)
+            List<Item> a_effacer = new List<Item>();
+            if (DataGridList.SelectedItems.Count > 0)
             {
-                Personne per = DataGridList.Items[DataGridList.SelectedIndex] as Personne;
-                AjoutEdition fenetre02 = new AjoutEdition(per);
-                if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
+                foreach (Item xxx in DataGridList.SelectedItems)
                 {
-                    listing.Remove(per);
-                    listing.Add(fenetre02.RecupDonneesPersonne());
+                    a_effacer.Add(xxx);
                 }
-                else // Annuler
+                foreach (Item yyy in a_effacer)
                 {
+                    lstMovies.Remove(yyy);
                 }
             }
-            else // Pas d'item selectionner dans la grid
-            {
-                MessageBox.Show("Plusieur elements selectioner");
-            }
-        }*/
+
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            // copier coller la methode edition
+        }
+
+   
+
+
+
+
+
+
+        /*  private void BtnModifierElement_Click(object sender, RoutedEventArgs e)
+          {
+              if (DataGridList.SelectedItems.Count == 1)
+              {
+                  Personne per = DataGridList.Items[DataGridList.SelectedIndex] as Personne;
+                  AjoutEdition fenetre02 = new AjoutEdition(per);
+                  if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
+                  {
+                      listing.Remove(per);
+                      listing.Add(fenetre02.RecupDonneesPersonne());
+                  }
+                  else // Annuler
+                  {
+                  }
+              }
+              else // Pas d'item selectionner dans la grid
+              {
+                  MessageBox.Show("Plusieur elements selectioner");
+              }
+          }*/
     }
 }
