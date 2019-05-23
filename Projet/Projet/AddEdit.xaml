@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
         Title="AjoutEdition" Height="483.884" Width="450.224">
-    <Grid>
+    <Grid Background="AliceBlue">
         <Label x:Name="LabelTitle" Content="Titre:" HorizontalAlignment="Left" Margin="220,20,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelYear" Content="Année:" HorizontalAlignment="Left" Margin="220,60,150,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelGender" Content="Genre:" HorizontalAlignment="Left" Margin="220,100,150,0" VerticalAlignment="Top"/>
@@ -39,10 +39,16 @@
         <TextBox x:Name="TextBoxStars" HorizontalAlignment="Right" Height="23" Margin="0,260,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <TextBox x:Name="TextBoxDescription" HorizontalAlignment="Center" Height="92" Margin="0,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2"/>
         <Image x:Name="ImageImage" HorizontalAlignment="Left" Height="240" Margin="30,20,0,0" VerticalAlignment="Top" Width="160" Grid.ColumnSpan="2"/>
-        <Button x:Name="BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="100,0,0,20" VerticalAlignment="Bottom" Width="85" Click="BtnValider_Click"/>
-        <Button x:Name="BtnAnnuler" Content="Annuler" HorizontalAlignment="Right" Margin="0,0,100,20" VerticalAlignment="Bottom" Width="85" Grid.ColumnSpan="2" Click="BtnAnnuler_Click"/>
-        <Button x:Name="BtnImage" Content="*" HorizontalAlignment="Left" Height="20" Margin="170,265,0,0" VerticalAlignment="Top" Width="20" Grid.ColumnSpan="2" Click="BtnImage_Click"/>
-        
+        <Button x:Name="BtnValider" HorizontalAlignment="Left" Margin="118,0,0,4" VerticalAlignment="Bottom" Width="56" Click="BtnValider_Click" Height="49"  Background="Transparent" BorderBrush="Transparent">
+            <Image x:Name="img_icon_val" Stretch="Fill" Height="39" Width="46"/>
+        </Button>
+        <Button x:Name="BtnAnnuler" HorizontalAlignment="Right" Margin="0,0,133,4" VerticalAlignment="Bottom" Width="53" Click="BtnAnnuler_Click" Height="49" Background="Transparent" BorderBrush="Transparent">
+            <Image  x:Name="img_icon_anul" Stretch="Fill" Height="41" Width="43"  />
+        </Button>
+        <Button x:Name="BtnImage" HorizontalAlignment="Left" Height="30" Margin="179,265,0,0" VerticalAlignment="Top" Width="30" Click="BtnImage_Click" Background="Transparent" BorderBrush="Transparent">
+            <Image  x:Name="img_icon_browse" Stretch="Fill" Height="25" Width="25" RenderTransformOrigin="0.5,0.5"  />
+        </Button>
+
 
     </Grid>
 </Window>
