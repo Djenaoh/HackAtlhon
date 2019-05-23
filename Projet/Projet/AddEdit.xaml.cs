@@ -57,6 +57,8 @@ namespace Projet
             {
                 pathImage = openFileDialog.FileName;
                 BitmapImage source = new BitmapImage(new Uri(pathImage));
+                System.IO.File.Copy(pathImage, PATH + "Image\\" + openFileDialog.SafeFileName, true);
+                pathImage = "Image\\" + openFileDialog.SafeFileName;
                 ImageImage.Source = source;
             }
         }

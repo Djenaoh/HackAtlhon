@@ -38,6 +38,7 @@ namespace Projet
             InitializeComponent();
             
             DataContext = lstMovies;
+            img_logo.Source = new BitmapImage(new Uri(PATH + "/Image/interface/logo.jpg"));
             img_icon_add.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_add.png"));
             //img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
             img_icon_delete.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_delete.png"));
