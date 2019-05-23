@@ -17,7 +17,7 @@ namespace Projet
         int rating;
         string image;
         List<List<string>> lstReviews;
-        List<string> lstDirectors;
+        List<string> lstDirectors; 
         List<string> lstWriters;
         List<string> lstStars;
         DateTime date;
