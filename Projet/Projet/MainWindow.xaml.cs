@@ -38,8 +38,13 @@ namespace Projet
             InitializeComponent();
             
             DataContext = lstMovies;
-
+            img_icon_add.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_add.png"));
+            //img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
+            img_icon_delete.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_delete.png"));
+            img_icon_edit.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_edit.png"));
+            //img_icon_Val.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_Val.png"));
         }
+        
             
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
         {
