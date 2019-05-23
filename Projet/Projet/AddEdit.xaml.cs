@@ -21,10 +21,16 @@ namespace Projet
     /// </summary>
     public partial class AddEdit : Window
     {
+        public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
         public AddEdit()
         {
+
             InitializeComponent();
             this.Title = "Ajouter";
+            img_icon_val.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_val.png"));
+            //img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
+            img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
+            img_icon_browse.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_browse.png"));
         }
         
         public AddEdit(Item movie)
@@ -51,6 +57,8 @@ namespace Projet
             {
                 pathImage = openFileDialog.FileName;
                 BitmapImage source = new BitmapImage(new Uri(pathImage));
+                System.IO.File.Copy(pathImage, PATH + "Image\\" + openFileDialog.SafeFileName, true);
+                pathImage = "Image\\" + openFileDialog.SafeFileName;
                 ImageImage.Source = source;
             }
         }
@@ -110,7 +118,7 @@ namespace Projet
                 TextBoxDescription.Clear();
             }
 
-            if (res != "Erreur:\n")
+            if (res != "Erreur(s):\n\n")
                 {
                     MessageBox.Show(res);
                 return;

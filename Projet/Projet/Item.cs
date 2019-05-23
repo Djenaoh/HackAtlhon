@@ -67,7 +67,7 @@ namespace Projet
         }
         public Item addImage(string e)
         {
-            this.Image = e;
+            this.Image = MainWindow.PATH  + e;
             return this;
         }
         public Item addReviews(params List<string>[] e)
