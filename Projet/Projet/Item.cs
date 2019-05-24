@@ -9,7 +9,7 @@ namespace Projet
     [Serializable()]
     public class Item
     {
-
+        //attributs
         string title;
         string description;
         KeyValuePair<int, string> lstGenders;
@@ -22,7 +22,7 @@ namespace Projet
         List<string> lstWriters;
         List<string> lstStars;
         DateTime date;
-
+         //get / set
         public string Title { get => title; set => title = value; }
         public string Description { get => description; set => description = value; }
         public int Rating { get => rating; set => rating = value; }
@@ -35,7 +35,7 @@ namespace Projet
         public List<string> LstWriters { get => lstWriters; set => lstWriters = value; }
         public List<string> LstStars { get => lstStars; set => lstStars = value; }
         public string Gender { get => gender; set => gender = value; }
-
+        
         public Item()
         {
             Date = DateTime.Now;
@@ -56,7 +56,7 @@ namespace Projet
             LstStars = lstStars;
             Date = DateTime.Now;
         }
-
+        //methodes d'ajout
         public Item addTitle(string e)
         {
             this.Title = e;
@@ -135,11 +135,6 @@ namespace Projet
         {
             this.Rating = e;
             return this;
-        }
-
-        public override string ToString()
-        {
-            return this.Title;
         }
     }
     

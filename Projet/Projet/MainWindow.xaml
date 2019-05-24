@@ -127,7 +127,7 @@
             <ComboBoxItem>Genre</ComboBoxItem>
             <ComboBoxItem>Note</ComboBoxItem>
         </ComboBox>
-        <Label Content="Recherche:" Width="80" Height="30" Margin="245,-1,867,740"/>
+        <Label Content="Recherche: " HorizontalAlignment="Left" Margin="257,-2,0,0" VerticalAlignment="Top"/>
     </Grid>
 
 

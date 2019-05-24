@@ -8,6 +8,7 @@ namespace Projet
 {
     public class EnumGender
     {
+        //variables statique
         public static KeyValuePair<int, string> None = new KeyValuePair<int, string>(0, "None");
         public static KeyValuePair<int, string> Action = new KeyValuePair<int, string>(1, "Action");
         public static KeyValuePair<int, string> Drame = new KeyValuePair<int, string>(2, "Drame");

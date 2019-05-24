@@ -23,6 +23,10 @@ namespace Projet
     public partial class AddEdit : Window
     {
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
+
+        /// <summary>
+        /// constructeur appellé pour ajouter un élément
+        /// </summary>
         public AddEdit()
         {
             InitializeComponent();
@@ -106,6 +110,10 @@ namespace Projet
             img_icon_browse.Source = new BitmapImage(new Uri(MainWindow.PATH + MainWindow.RES + "icon_browse.png"));
         }
         
+        /// <summary>
+        /// constructeur appellé pour appeler un item
+        /// </summary>
+        /// <param name="movie"></param>
         public AddEdit(Item movie)
         {
             InitializeComponent();
@@ -142,6 +150,11 @@ namespace Projet
             return tmp;
         }
         
+        /// <summary>
+        /// methode qui prend le chemin de l'image ajouté, la copie dans un dossier propre au projet et ajoute le chemin créé dans l'objet item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnImage_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -161,6 +174,11 @@ namespace Projet
             }
         }
 
+        /// <summary>
+        /// methode permettant de faire les controles de saisie
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnValider_Click(object sender, RoutedEventArgs e)
         {
             string res = "Erreur(s):\n\n";
@@ -180,11 +198,6 @@ namespace Projet
             {
                 res += "-Le titre est obligatoire\n";
             }
-            else if (!isValidString(TextBoxTitle.Text))
-            {
-                res += "-Le texte entré dans la partie Titre \"" + TextBoxTitle.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
-                TextBoxTitle.Clear();
-            }
             if (TextBoxYear.Text == "")
             {
                 res += "-L'année est obligatoire\n";
@@ -198,26 +211,6 @@ namespace Projet
             {
                 res += "-Le texte entré dans la partie Année  \"" + TextBoxYear.Text + "\" n'est pas correct. Veuillez entrer une année compris entre 1700 et 2500\n";
                 TextBoxYear.Clear();
-            }
-            if (!isValidString(TextBoxDirector.Text))
-            {
-                res += "-Le texte entré dans la partie Directeur \"" + TextBoxDirector.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
-                TextBoxDirector.Clear();
-            }
-            if (!isValidString(TextBoxStars.Text))
-            {
-                res += "-Le texte entré dans la partie Star \"" + TextBoxStars.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
-                TextBoxStars.Clear();
-            }
-            if (!isValidString(TextBoxWriters.Text))
-            {
-                res += "-Le texte entré dans la partie Scénariste \"" + TextBoxWriters.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
-                TextBoxWriters.Clear();
-            }
-            if (!isValidString(TextBoxDescription.Text))
-            {
-                res += "-Le texte entré dans la partie Description \"" + TextBoxDescription.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
-                TextBoxDescription.Clear();
             }
 
             if (res != "Erreur(s):\n\n")
@@ -243,14 +236,11 @@ namespace Projet
             return e.Split(',');
         }
 
-        private bool isValidString(string e)
-        {
-            return true;
-            Regex regexItem = new Regex("^[a-zA-Z0-9.,;:'\"\\-éèàçâêûîôäëüïöùæœ&ÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]* $");
-            return regexItem.IsMatch(e);
-
-        }
-
+        /// <summary>
+        /// methode pour annuler et revenir à la mainwindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;

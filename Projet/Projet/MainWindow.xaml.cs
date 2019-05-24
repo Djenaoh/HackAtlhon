@@ -28,7 +28,7 @@ namespace Projet
     public partial class MainWindow : Window
     {
 
-        // Attr
+        // Attributs
         ObservableCollection<Item> lstMovies = new ObservableCollection<Item>();
        
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
@@ -46,7 +46,11 @@ namespace Projet
             BtnDelete.IsEnabled = false;
 
         }
-
+        /// <summary>
+        /// methode permettant d'ouvrir un fichier de sauvergarde de la librairie
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -63,6 +67,11 @@ namespace Projet
             }
         }
 
+        /// <summary>
+        /// methode permettant de sauvergarder un fichier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuFileSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -76,11 +85,20 @@ namespace Projet
             }
         }
 
+        /// <summary>
+        /// methode permettant de quitter l'application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuFileExit_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// methode qui serialise des objets items dans une observable collection qui est serialisée dans un fichier
+        /// </summary>
+        /// <param name="fileName"></param>
         public void toSerialize(string fileName)
         {
             FileStream stream = File.Create(fileName);
@@ -88,6 +106,11 @@ namespace Projet
             formatter.Serialize(stream, lstMovies);
             stream.Close();
         }
+
+        /// <summary>
+        /// methode deserialize des objets items dans une observable collection qui est serialisée dans un fichier
+        /// </summary>
+        /// <param name="fileName"></param>
         public void deSerialize(string fileName)
         {
             var formatter = new BinaryFormatter();
@@ -100,6 +123,11 @@ namespace Projet
             }
         }
 
+        /// <summary>
+        /// methode qui permet de faire un test de population dans la librairie
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddLebowski_Click(object sender, RoutedEventArgs e)
         {
             Item lebowski = new Item().addTitle("The Big Lebowski")
@@ -140,16 +168,29 @@ namespace Projet
             }
         }
 
+        /// <summary>
+        /// outil de debug qui permet de vider la bibliotheque
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteDataGrid_Click(object sender, RoutedEventArgs e)
         {
             lstMovies.Clear();
         }
 
+        /// <summary>
+        /// methode qui permet d'ajouter un item en appelant la methode add
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuAddMovie_Click(object sender, RoutedEventArgs e)
         {
             add();
         }
 
+        /// <summary>
+        /// methode qui ajoute un nouvel item en appelant une nouvelle fenetre
+        /// </summary>
         private void add()
         {
             AddEdit fenetre02 = new AddEdit();
@@ -162,17 +203,21 @@ namespace Projet
                     BtnDelete.IsEnabled = true;
                 }
             }
-            else // Annuler
-            {
-            }
         }
 
+        /// <summary>
+        /// methode qui appele une methode delete 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnDeleteMovie_Click(object sender, RoutedEventArgs e)
         {
             delete();
 
         }
-
+         /// <summary>
+         /// methode qui permet de supprimer un item dans la bibliotheque
+         /// </summary>
         private void delete()
         {
             List<Item> a_effacer = new List<Item>();
@@ -196,27 +241,19 @@ namespace Projet
             }
         }
 
+        /// <summary>
+        /// methode qui permet d'appeler la méthode edit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnEditMovie_Click(object sender, RoutedEventArgs e)
         {
-            if (DataGridList.SelectedItems.Count == 1)
-            {
-                Item movie = DataGridList.Items[DataGridList.SelectedIndex] as Item;
-                AddEdit fenetre02 = new AddEdit(movie);
-                if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
-                {
-                    lstMovies.Remove(movie);
-                    lstMovies.Add(fenetre02.ReturnData());
-                }
-                else // Annuler
-                {
-                }
-            }
-            else // Pas d'item selectionner dans la grid
-            {
-                MessageBox.Show("Erreur: Pas d'éléments sélectionné");
-            }
+            edit();
         }
 
+        /// <summary>
+        /// methode qui permet d'éditer un item dans la bibliotheque en appelant une nouvelle fenetre
+        /// </summary>
         private void edit()
         {
             if (DataGridList.SelectedItems.Count == 1)
@@ -228,9 +265,6 @@ namespace Projet
                     lstMovies.Remove(movie);
                     lstMovies.Add(fenetre02.ReturnData());
                 }
-                else // Annuler
-                {
-                }
             }
             else // Pas d'item selectionner dans la grid
             {
@@ -238,12 +272,23 @@ namespace Projet
             }
         }
 
+        /// <summary>
+        /// methode qui permet de clear la selection des items lorsqu'on change la valeur de filtre
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBoxFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGridList.SelectedItems.Clear();
         }
 
         bool flagctrl = false;
+
+        /// <summary>
+        /// methode permettant de gerer les inputs clavier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.LeftCtrl)
@@ -272,11 +317,21 @@ namespace Projet
             }
         }
 
+        /// <summary>
+        /// methoque qui permet d'ouvrir la fenetre d'aide
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuHelpShow_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("GILLOU TU FERA IC", "SUPER TITRE", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Développé par : \n– Victor Hachard \n– Gilles Van Acker \n– Arthur Draye \n– Bastien Weber \n– Stacey Cnudde", "Autheurs", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        /// <summary>
+        /// methode qui permet de faire une recherche des item de la datagrid dès qu'un mot est entré
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBoxFind_TextChanged(object sender, TextChangedEventArgs e)
         {
           
