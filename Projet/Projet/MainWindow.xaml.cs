@@ -113,11 +113,6 @@ namespace Projet
             lstMovies.Clear();
         }
 
-        private void MenuFileClose_Click(object sender, RoutedEventArgs e)
-        {
-            lstMovies.Clear();
-        }
-
         private void MenuAddMovie_Click(object sender, RoutedEventArgs e)
         {
             AddEdit fenetre02 = new AddEdit();
@@ -130,7 +125,7 @@ namespace Projet
             }
         }
 
-        private void Btn_delete_Click(object sender, RoutedEventArgs e)
+        private void BtnDeleteMovie_Click(object sender, RoutedEventArgs e)
         {
             List<Item> a_effacer = new List<Item>();
             if (DataGridList.SelectedItems.Count > 0)
@@ -147,7 +142,7 @@ namespace Projet
 
         }
 
-        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        private void BtnEditMovie_Click(object sender, RoutedEventArgs e)
         {
               if (DataGridList.SelectedItems.Count == 1)
               {
@@ -164,27 +159,38 @@ namespace Projet
               }
               else // Pas d'item selectionner dans la grid
               {
-                  MessageBox.Show("Plusieur elements selectioner");
+                  MessageBox.Show("Erreur: Plusieurs elements doivent être sélectionner");
               }
           }
 
         private void BtnFind_Click(object sender, RoutedEventArgs e)
         {
             int count = 0;
+            int preCount = 0;
             DataGridList.SelectedItems.Clear();
             foreach (Item item in DataGridList.Items)
             {
-                string[] tmp = item.Title.Split(' ');
-                foreach(string str in tmp)
+                preCount = 0;
+                foreach(string strFind in item.Title.Split(' '))
                 {
-                    if (TextBoxFind.Text.ToLower() == str.ToLower())
+                    foreach (string strBox in TextBoxFind.Text.Split(' '))
                     {
-                        DataGridList.SelectedItems.Add(item);
-                        count++;
+                        if (strBox.ToLower() == strFind.ToLower())
+                        {
+                            DataGridList.SelectedItems.Add(item);
+                            preCount++;
+                            if (preCount == 0)
+                                count++;
+                        }
                     }
                 }
             }
             //MessageBox.Show("Nombre d'occurences : " + count);
+        }
+
+        private void MenuFileClose_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

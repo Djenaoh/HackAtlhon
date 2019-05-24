@@ -17,12 +17,14 @@
                 <MenuItem Header="_Fichier">
                     <MenuItem x:Name="MenuFileOpen" Header="_Ouvrir" Click="MenuFileOpen_Click"/>
                     <MenuItem x:Name="MenuFileSave" Header="_Enregistrer" Click="MenuFileSave_Click"/>
-                    <MenuItem x:Name="MenuFileClose" Header="_Fermer" Click="MenuFileClose_Click"/>
+                    <MenuItem x:Name="MenuFileClose" Header="_Fermer" Click="DeleteDataGrid_Click"/>
                     <Separator/>
                     <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Edition">
                     <MenuItem x:Name="MenuAddMovie" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
+                    <MenuItem x:Name="MenuRemoveMovie" Header="_Ajouter un film" Click="BtnDeleteMovie_Click"/>
+                    <MenuItem x:Name="MenuEditMovie" Header="_Ajouter un film" Click="BtnEditMovie_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
@@ -37,7 +39,7 @@
         <DataGrid x:Name="DataGridList" Height="510" Margin="10,24,10,24" VerticalAlignment="Top" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}" Width="auto" Opacity="0.8">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
-                    <EventSetter Event="MouseDoubleClick" Handler="BtnEdit_Click"/>
+                    <EventSetter Event="MouseDoubleClick" Handler="BtnEditMovie_Click"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
@@ -74,10 +76,10 @@
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
         <Grid Height="192" Margin="0,539,10,0" VerticalAlignment="Top" Width="600" MinWidth="600" HorizontalAlignment="Right" >
-            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Height="192" Click="BtnEdit_Click" Background="Transparent" BorderBrush="Transparent">
+            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Height="192" Click="BtnEditMovie_Click" Background="Transparent" BorderBrush="Transparent">
                 <Image x:Name="img_icon_edit" Stretch="Fill" Height="109" Width="125"/>
             </Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Top" Width="229" Height="192" Click="Btn_delete_Click" Background="Transparent" BorderBrush="Transparent">
+            <Button HorizontalAlignment="Center" VerticalAlignment="Top" Width="229" Height="192" Click="BtnDeleteMovie_Click" Background="Transparent" BorderBrush="Transparent">
                 <Image x:Name="img_icon_delete" Stretch="Fill" Height="109" Width="125"/>
             </Button>
             <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="229" Height="192" Click="MenuAddMovie_Click" Background="Transparent" BorderBrush="Transparent">
