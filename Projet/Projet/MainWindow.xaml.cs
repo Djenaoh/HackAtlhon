@@ -283,70 +283,44 @@ namespace Projet
             DataGridList.SelectedItems.Clear();
             string choise = ComboBoxFilter.SelectionBoxItem.ToString();
             int count = 0;
-            int preCount = 0;
             List<Item> lstDevant = new List<Item>();
 
             foreach (Item item in DataGridList.Items)
             {
-                string[] lstItems = item.Title.Split(' ');
+                List<string> lstItems = new List<string>();
                 int i = 0;
                 switch (choise)
                 {
-                    case "Year":
-                        lstItems[0] = item.Year.ToString();
+                    case "Titre":
+                        lstItems.AddRange(item.Title.Split(' ').ToList());
                         break;
-                    case "Gender":
-                        lstItems = item.Gender.Split(' ');
+                    case "Année":
+                        lstItems.Add(item.Year.ToString());
                         break;
-                    case "Directors":
-                        foreach (string str in item.LstDirectors)
-                        {
-                            lstItems[i] = str;
-                            i++;
-                        }
+                    case "Genre":
+                        lstItems.AddRange(item.Gender.Split(' ').ToList());
                         break;
-                    case "Writers":
-                        foreach (string str in item.LstWriters)
-                        {
-                            lstItems[i] = str;
-                            i++;
-                        }
-                        break;
-                    case "Stars":
-                        foreach (string str in item.LstStars)
-                        {
-                            lstItems[i] = str;
-                            i++;
-                        }
-                        break;
-                    case "Rating":
-                        lstItems[0] = item.Rating.ToString();
+                    case "Note":
+                        lstItems.Add(item.Rating.ToString());
                         break;
                 }
-                preCount = 0;
                 foreach (string strFind in lstItems)
                 {
                     foreach (string strBox in TextBoxFind.Text.Split(' '))
                     {
                         if (strBox.ToLower() == strFind.ToLower())
                         {
-                            DataGridList.SelectedItems.Add(item);
                             lstDevant.Add(item);
-                            preCount++;
-                            if (preCount == 0)
-                                count++;
                         }
                     }
                 }
-
-
             }
-
-
             foreach (Item tt in lstDevant)
             {
-
+                count++;
                 lstMovies.Move(lstMovies.IndexOf(tt), 0);
+
+                DataGridList.SelectedItems.Add(tt);
             }
 
         }
