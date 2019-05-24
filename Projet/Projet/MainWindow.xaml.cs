@@ -244,6 +244,7 @@ namespace Projet
             string choise = ComboBoxFilter.SelectionBoxItem.ToString();
             int count = 0;
             int preCount = 0;
+            List<Item> lstDevant = new List<Item>();
 
             foreach (Item item in DataGridList.Items)
             {
@@ -290,12 +291,22 @@ namespace Projet
                         if (strBox.ToLower() == strFind.ToLower())
                         {
                             DataGridList.SelectedItems.Add(item);
+                            lstDevant.Add(item);
                             preCount++;
                             if (preCount == 0)
                                 count++;
                         }
                     }
                 }
+
+
+            }
+
+
+            foreach (Item tt in lstDevant)
+            {
+
+                lstMovies.Move(lstMovies.IndexOf(tt), 0);
             }
             //MessageBox.Show("Nombre d'occurences : " + count);
         }
@@ -324,6 +335,11 @@ namespace Projet
             {
                 add();
             }
+        }
+
+        private void MenuHelpShow_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("GILLOU TU FERA IC", "SUPER TITRE", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
