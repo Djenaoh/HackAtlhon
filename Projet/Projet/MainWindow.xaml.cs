@@ -41,10 +41,10 @@ namespace Projet
             DataContext = lstMovies;
             img_logo.Source = new BitmapImage(new Uri(PATH + RES + "logo.jpg"));
             img_icon_add.Source = new BitmapImage(new Uri(PATH + RES + "icon_add.png"));
-            //img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
+            //img_icon_anul.Source = new BitmapImage(new Uri(PATH + RES + "icon_anul.png"));
             img_icon_delete.Source = new BitmapImage(new Uri(PATH + RES + "icon_delete.png"));
             img_icon_edit.Source = new BitmapImage(new Uri(PATH + RES + "icon_edit.png"));
-            //img_icon_Val.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_Val.png"));
+            //img_icon_Val.Source = new BitmapImage(new Uri(PATH + + REZ + "icon_Val.png"));
         }
         
             
