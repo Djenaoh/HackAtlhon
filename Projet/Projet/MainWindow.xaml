@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200" MinWidth="600" MinHeight="800" KeyDown="Window_KeyDown" >
+        Title="MainWindow" Height="800" Width="1200" MinWidth="700" MinHeight="800" KeyDown="Window_KeyDown" >
     <Window.Resources>
         <!-- Binding -->
         <CollectionViewSource x:Key="Item" Source="{Binding}"/>
@@ -17,13 +17,13 @@
                 <MenuItem Header="_Fichier">
                     <MenuItem x:Name="MenuFileOpen" Header="_Ouvrir" Click="MenuFileOpen_Click"/>
                     <MenuItem x:Name="MenuFileSave" Header="_Enregistrer" Click="MenuFileSave_Click"/>
-                   <Separator/>
+                    <Separator/>
                     <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Edition">
                     <MenuItem x:Name="MenuAddMovie"  InputGestureText="A" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
                     <MenuItem x:Name="MenuRemoveMovie"  InputGestureText="E" Header="_Editer un film" Click="BtnEditMovie_Click"/>
-                    <MenuItem x:Name="MenuEditMovie" InputGestureText="D" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
+                    <MenuItem x:Name="MenuEditMovie" InputGestureText="CD" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
@@ -111,7 +111,7 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <Grid Height="141" VerticalAlignment="Bottom" Width="600" MinWidth="600" HorizontalAlignment="center" Margin="296,0" >
+        <Grid Height="141" VerticalAlignment="Bottom" Width="Auto" MinWidth="600" HorizontalAlignment="center">
             <Button x:Name="BtnEdit" HorizontalAlignment="Left" VerticalAlignment="Top" Height="100" Width="116"  Click="BtnEditMovie_Click" Background="Transparent" BorderBrush="Transparent">
                 <Image x:Name="img_icon_edit" Stretch="Fill" Height="100" Width="116"/>
             </Button>
@@ -123,8 +123,7 @@
             </Button>
         </Grid>
         <TextBox x:Name="TextBoxFind" HorizontalAlignment="Left" Height="24" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <Button x:Name="BtnFind" Content="Recherche" HorizontalAlignment="Left" Margin="438,0,0,0" VerticalAlignment="Top" Width="75" Click="BtnFind_Click" Height="24"/>
-        <ComboBox x:Name="ComboBoxFilter" SelectedIndex="0"  HorizontalAlignment="Left" Margin="678,2,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxFilter_SelectionChanged">
+        <ComboBox x:Name="ComboBoxFilter" SelectedIndex="0"  HorizontalAlignment="Left" Margin="437,0,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxFilter_SelectionChanged" Height="24">
             <ComboBoxItem>Title</ComboBoxItem>
             <ComboBoxItem>Year</ComboBoxItem>
             <ComboBoxItem>Gender</ComboBoxItem>
@@ -133,6 +132,7 @@
             <ComboBoxItem>Stars</ComboBoxItem>
             <ComboBoxItem>Rating</ComboBoxItem>
         </ComboBox>
+        <Button x:Name="BtnFind" Content="Recherche" HorizontalAlignment="Left" Margin="561,0,0,0" VerticalAlignment="Top" Width="75" Click="BtnFind_Click" Height="24"/>
     </Grid>
 
 
