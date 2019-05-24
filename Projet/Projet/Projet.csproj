@@ -62,8 +62,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EnumGender.cs" />
-    <Compile Include="InternalWrapper.cs" />
-    <Compile Include="Wrapper.cs" />
     <Page Include="AddEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

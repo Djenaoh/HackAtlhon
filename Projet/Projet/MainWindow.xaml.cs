@@ -30,11 +30,9 @@ namespace Projet
 
         // Attr
         ObservableCollection<Item> lstMovies = new ObservableCollection<Item>();
-        ObservableCollection<Wrapper> lstSeries = new ObservableCollection<Wrapper>();
-
+       
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
         public static string RES = "/res/interface/";
-        private object Keys;
 
         public MainWindow()
         {
@@ -42,10 +40,8 @@ namespace Projet
             DataContext = lstMovies;
             img_logo.Source = new BitmapImage(new Uri(PATH + RES + "logo.jpg"));
             img_icon_add.Source = new BitmapImage(new Uri(PATH + RES + "icon_add.png"));
-            //img_icon_anul.Source = new BitmapImage(new Uri(PATH + RES + "icon_anul.png"));
             img_icon_delete.Source = new BitmapImage(new Uri(PATH + RES + "icon_delete.png"));
             img_icon_edit.Source = new BitmapImage(new Uri(PATH + RES + "icon_edit.png"));
-            //img_icon_Val.Source = new BitmapImage(new Uri(PATH + + REZ + "icon_Val.png"));
             BtnEdit.IsEnabled = false;
             BtnDelete.IsEnabled = false;
 
@@ -71,6 +67,7 @@ namespace Projet
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text files (*.txt)|*.txt";
+            saveFileDialog.DefaultExt = "txt";
             saveFileDialog.FileName = "database.txt";
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (saveFileDialog.ShowDialog() == true)
