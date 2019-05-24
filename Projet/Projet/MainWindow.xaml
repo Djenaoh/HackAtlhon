@@ -21,9 +21,9 @@
                     <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Edition">
-                    <MenuItem x:Name="MenuAddMovie"  InputGestureText="A" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
-                    <MenuItem x:Name="MenuRemoveMovie"  InputGestureText="E" Header="_Editer un film" Click="BtnEditMovie_Click"/>
-                    <MenuItem x:Name="MenuEditMovie" InputGestureText="CD" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
+                    <MenuItem x:Name="MenuAddMovie"  InputGestureText="Ctrl+N" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
+                    <MenuItem x:Name="MenuRemoveMovie"  InputGestureText="Ctrl+D" Header="_Editer un film" Click="BtnEditMovie_Click"/>
+                    <MenuItem x:Name="MenuEditMovie" InputGestureText="Ctrl+E" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide" Click="MenuHelpShow_Click"/>
@@ -35,14 +35,14 @@
             </Menu>
         </DockPanel>
         <Image x:Name="img_logo" Margin="0,50,0,0" VerticalAlignment="Center" Stretch= "Uniform"  HorizontalAlignment="Center" />
-        <DataGrid x:Name="DataGridList" Height="510" Margin="10,24,10,24" VerticalAlignment="Top" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}" Width="auto" Opacity="0.8" HeadersVisibility="Column">
+        <DataGrid x:Name="DataGridList" Margin="10,24,10,150" VerticalAlignment="Stretch" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}" Width="auto" Opacity="0.8" HeadersVisibility="Column">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="BtnEditMovie_Click"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Cover" Width="Auto">
+                <DataGridTemplateColumn Header="Affiche" Width="Auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Height="40" Width="30" Source="{Binding Image}"/>
@@ -50,12 +50,12 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Titre" Width="Auto"  Binding="{Binding Title}"/>
-                <DataGridTextColumn Header="Annee" Width="45" Binding="{Binding Year}"/>
+                <DataGridTextColumn Header="Année" Width="45" Binding="{Binding Year}"/>
                 <DataGridTextColumn Header="Genre" Width="Auto" Binding="{Binding Gender}"/>
-                <DataGridTextColumn Header="Directors" Width="Auto" Binding="{Binding LstDirectors, Converter={StaticResource ListToStringConverter}}"/>
-                <DataGridTextColumn Header="Writers" Width="Auto" Binding="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}"/>
-                <DataGridTextColumn Header="Stars" Width="Auto" Binding="{Binding LstStars, Converter={StaticResource ListToStringConverter}}"/>
-                <DataGridTextColumn Header="Rating" Width="45" Binding="{Binding Rating}"/>
+                <DataGridTextColumn Header="Directeur" Width="Auto" Binding="{Binding LstDirectors, Converter={StaticResource ListToStringConverter}}"/>
+                <DataGridTextColumn Header="Réalisateur" Width="Auto" Binding="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}"/>
+                <DataGridTextColumn Header="Acteur" Width="Auto" Binding="{Binding LstStars, Converter={StaticResource ListToStringConverter}}"/>
+                <DataGridTextColumn Header="Note" Width="45" Binding="{Binding Rating}"/>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
@@ -86,20 +86,20 @@
 
                                     <TextBlock Text="Description:   " VerticalAlignment="Center" Grid.Column="1" Grid.Row="7" FontSize="16" FontFamily="Constantia" FontWeight="Bold" />
                                     <TextBlock Text="{Binding Description}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="7" TextWrapping="Wrap"/>
-                                    <TextBlock Text="Title: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="Titre: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Title}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0"/>
-                                    <TextBlock Text="Annee: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="Année: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Year}" VerticalAlignment="Center" Grid.Column="2"  Grid.Row="1"/>
                                     <TextBlock Text="Genre: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Gender}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2"/>
-                                    <TextBlock Text="Directors:  " VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="Directeur:  " VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding LstDirectors, Converter={StaticResource ListToStringConverter}}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="3"/>
 
-                                    <TextBlock Text="Writer: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="Réalisateur: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="4"/>
-                                    <TextBlock Text="Stars: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="Acteur: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding LstStars, Converter={StaticResource ListToStringConverter}}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="5"/>
-                                    <TextBlock Text="Rating: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="6" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="Note: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="6" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Rating}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="6"/>
                                 </Grid>
                             </StackPanel>
@@ -120,14 +120,14 @@
                 <Image x:Name="img_icon_add" Stretch="Fill" Height="100" Width="116"/>
             </Button>
         </Grid>
-        <TextBox x:Name="TextBoxFind" HorizontalAlignment="Left" Height="24" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
-        <ComboBox x:Name="ComboBoxFilter" SelectedIndex="0"  HorizontalAlignment="Left" Margin="437,0,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxFilter_SelectionChanged" Height="24">
-            <ComboBoxItem>Title</ComboBoxItem>
-            <ComboBoxItem>Year</ComboBoxItem>
-            <ComboBoxItem>Gender</ComboBoxItem>
-            <ComboBoxItem>Rating</ComboBoxItem>
+        <TextBox x:Name="TextBoxFind" HorizontalAlignment="Left" Height="24" Margin="327,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" TextChanged="TextBoxFind_TextChanged"/>
+        <ComboBox x:Name="ComboBoxFilter" SelectedIndex="0"  HorizontalAlignment="Left" Margin="521,0,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxFilter_SelectionChanged" Height="24">
+            <ComboBoxItem>Titre</ComboBoxItem>
+            <ComboBoxItem>Année</ComboBoxItem>
+            <ComboBoxItem>Genre</ComboBoxItem>
+            <ComboBoxItem>Note</ComboBoxItem>
         </ComboBox>
-        <Button x:Name="BtnFind" Content="Recherche" HorizontalAlignment="Left" Margin="561,0,0,0" VerticalAlignment="Top" Width="75" Click="BtnFind_Click" Height="24"/>
+        <Label Content="Recherche:" Margin="250,-2,0,0"/>
     </Grid>
 
 

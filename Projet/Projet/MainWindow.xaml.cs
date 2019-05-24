@@ -238,8 +238,48 @@ namespace Projet
             }
         }
 
-        private void BtnFind_Click(object sender, RoutedEventArgs e)
+        private void ComboBoxFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            DataGridList.SelectedItems.Clear();
+        }
+
+        bool flagctrl = false;
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl)
+            {
+                flagctrl = true;
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.D) && (flagctrl))
+            {
+                flagctrl = false;
+                delete();
+            }
+            else if ((e.Key == Key.E ) && (flagctrl))
+            {
+                edit();
+                flagctrl = false;
+            }
+            else if ((e.Key == Key.N) && (flagctrl))
+            {
+                add();
+                flagctrl = false;
+            }
+            else
+            {
+                flagctrl = false;
+            }
+        }
+
+        private void MenuHelpShow_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("GILLOU TU FERA IC", "SUPER TITRE", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void TextBoxFind_TextChanged(object sender, TextChangedEventArgs e)
+        {
+          
             DataGridList.SelectedItems.Clear();
             string choise = ComboBoxFilter.SelectionBoxItem.ToString();
             int count = 0;
@@ -308,38 +348,7 @@ namespace Projet
 
                 lstMovies.Move(lstMovies.IndexOf(tt), 0);
             }
-            //MessageBox.Show("Nombre d'occurences : " + count);
-        }
 
-        private void MenuFileClose_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ComboBoxFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DataGridList.SelectedItems.Clear();
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.D)
-            {
-                delete();
-            }
-            else if (e.Key == Key.E)
-            {
-                edit();
-            }
-            else if (e.Key == Key.A)
-            {
-                add();
-            }
-        }
-
-        private void MenuHelpShow_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("GILLOU TU FERA IC", "SUPER TITRE", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

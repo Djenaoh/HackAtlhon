@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-        Title="AjoutEdition" Height="483.884" Width="450.224" ResizeMode="NoResize">
+        Title="AjoutEdition" Height="483.884" Width="470.224" ResizeMode="NoResize">
     <Grid Background="AliceBlue">
-        <Label x:Name="LabelTitle" Content="Titre:" HorizontalAlignment="Left" Margin="220,20,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelYear" Content="Année:" HorizontalAlignment="Left" Margin="220,60,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelTitle" Content="Titre:  *" HorizontalAlignment="Left" Margin="220,20,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelYear" Content="Année:  *" HorizontalAlignment="Left" Margin="220,60,150,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelGender" Content="Genre:" HorizontalAlignment="Left" Margin="220,100,150,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelRating" Content="Note:" HorizontalAlignment="Left" Margin="220,140,150,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelDirectors" Content="Directeur:" HorizontalAlignment="Left" Margin="220,180,150,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelWritres" Content="Scenariste:" HorizontalAlignment="Left" Margin="220,220,150,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelWritres" Content="Réalisateur:" HorizontalAlignment="Left" Margin="220,220,150,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelStars" Content="Acteur:" HorizontalAlignment="Left" Margin="220,260,150,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelDescription" Content="Description:" HorizontalAlignment="Left" Margin="20,275,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextBoxTitle" HorizontalAlignment="Right" Height="23" Margin="0,20,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <TextBox x:Name="TextBoxYear" HorizontalAlignment="Right" Height="23" Margin="0,60,20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <ComboBox x:Name="ComboGender" SelectedIndex="0"  HorizontalAlignment="Right" Height="23" Margin="0,100,20,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2">
-            <ComboBoxItem>None</ComboBoxItem>
+            <ComboBoxItem>Aucun</ComboBoxItem>
             <ComboBoxItem>Action</ComboBoxItem>
             <ComboBoxItem>Drame</ComboBoxItem>
             <ComboBoxItem>Comedie</ComboBoxItem>

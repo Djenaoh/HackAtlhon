@@ -33,11 +33,11 @@ namespace Projet
         }
         void TextChanger()
         {
-            TextBoxTitle.Tag = "Film";
-            TextBoxWriters.Tag = "Scénariste(s)";
-            TextBoxYear.Tag = "Année xxxx";
-            TextBoxDirector.Tag = "Réalisateur(s)";
-            TextBoxStars.Tag = "Acteur(s)";
+            TextBoxTitle.Tag = "Titre";
+            TextBoxWriters.Tag = "Réalisateur";
+            TextBoxYear.Tag = "XXXX";
+            TextBoxDirector.Tag = "Directeur";
+            TextBoxStars.Tag = "Acteur";
             TextBoxDescription.Tag = "Ajoutez une description/Synopsis";
 
             TextBoxTitle.Foreground = Brushes.Gray;
