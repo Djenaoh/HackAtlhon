@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200" MinWidth="600" MinHeight="800" >
+        Title="MainWindow" Height="800" Width="1200" MinWidth="600" MinHeight="800" KeyDown="Window_KeyDown" >
     <Window.Resources>
         <!-- Binding -->
         <CollectionViewSource x:Key="Item" Source="{Binding}"/>
@@ -21,9 +21,9 @@
                     <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Edition">
-                    <MenuItem x:Name="MenuAddMovie" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
-                    <MenuItem x:Name="MenuRemoveMovie" Header="_Editer un film" Click="BtnEditMovie_Click"/>
-                    <MenuItem x:Name="MenuEditMovie" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
+                    <MenuItem x:Name="MenuAddMovie"  InputGestureText="Ctrl+N" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
+                    <MenuItem x:Name="MenuRemoveMovie"  InputGestureText="Ctrl+E" Header="_Editer un film" Click="BtnEditMovie_Click"/>
+                    <MenuItem x:Name="MenuEditMovie" InputGestureText="Ctrl+D" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>

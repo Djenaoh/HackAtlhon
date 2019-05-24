@@ -31,9 +31,11 @@ namespace Projet
         // Attr
         ObservableCollection<Item> lstMovies = new ObservableCollection<Item>();
         ObservableCollection<Wrapper> lstSeries = new ObservableCollection<Wrapper>();
-        
+
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
         public static string RES = "/res/interface/";
+        private object Keys;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -48,8 +50,9 @@ namespace Projet
             BtnDelete.IsEnabled = false;
 
         }
-        
-            
+
+
+
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -187,24 +190,24 @@ namespace Projet
 
         private void BtnEditMovie_Click(object sender, RoutedEventArgs e)
         {
-              if (DataGridList.SelectedItems.Count == 1)
-              {
-                  Item movie = DataGridList.Items[DataGridList.SelectedIndex] as Item;
-                  AddEdit fenetre02 = new AddEdit(movie);
-                  if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
-                  {
-                      lstMovies.Remove(movie);
+            if (DataGridList.SelectedItems.Count == 1)
+            {
+                Item movie = DataGridList.Items[DataGridList.SelectedIndex] as Item;
+                AddEdit fenetre02 = new AddEdit(movie);
+                if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
+                {
+                    lstMovies.Remove(movie);
                     lstMovies.Add(fenetre02.ReturnData());
-                  }
-                  else // Annuler
-                  {
-                  }
-              }
-              else // Pas d'item selectionner dans la grid
-              {
-                  MessageBox.Show("Erreur: Pas d'éléments sélectionné");
-              }
-          }
+                }
+                else // Annuler
+                {
+                }
+            }
+            else // Pas d'item selectionner dans la grid
+            {
+                MessageBox.Show("Erreur: Pas d'éléments sélectionné");
+            }
+        }
 
         private void BtnFind_Click(object sender, RoutedEventArgs e)
         {
@@ -240,9 +243,9 @@ namespace Projet
                         }
                         break;
                     case "Stars":
-                        foreach(string str in item.LstStars)
+                        foreach (string str in item.LstStars)
                         {
-                            lstItems[i] =str;
+                            lstItems[i] = str;
                             i++;
                         }
                         break;
@@ -251,7 +254,7 @@ namespace Projet
                         break;
                 }
                 preCount = 0;
-                foreach(string strFind in lstItems)
+                foreach (string strFind in lstItems)
                 {
                     foreach (string strBox in TextBoxFind.Text.Split(' '))
                     {
@@ -277,5 +280,14 @@ namespace Projet
         {
             DataGridList.SelectedItems.Clear();
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl && e.Key == Key.E)
+            {
+                MessageBox.Show("test");
+            }
+        }
+
     }
 }
