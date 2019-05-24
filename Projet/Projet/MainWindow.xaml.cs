@@ -50,7 +50,7 @@ namespace Projet
             BtnDelete.IsEnabled = false;
 
         }
-        
+
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -219,13 +219,13 @@ namespace Projet
                 MessageBox.Show("Erreur: Pas d'éléments sélectionné");
             }
         }
-        
+
         private void edit()
         {
-        if (DataGridList.SelectedItems.Count == 1)
+            if (DataGridList.SelectedItems.Count == 1)
             {
                 Item movie = DataGridList.Items[DataGridList.SelectedIndex] as Item;
-        AddEdit fenetre02 = new AddEdit(movie);
+                AddEdit fenetre02 = new AddEdit(movie);
                 if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
                 {
                     lstMovies.Remove(movie);
@@ -239,7 +239,7 @@ namespace Projet
             {
                 MessageBox.Show("Erreur: Pas d'éléments sélectionné");
             }
-    }
+        }
 
         private void BtnFind_Click(object sender, RoutedEventArgs e)
         {
@@ -328,6 +328,5 @@ namespace Projet
                 add();
             }
         }
-
     }
 }
