@@ -27,6 +27,7 @@ namespace Projet
         {
             InitializeComponent();
             this.Title = "Ajouter";
+            ImageImage.Source = new BitmapImage(new Uri(MainWindow.PATH + MainWindow.RES + "template.jpg"));
             load();
         }
 
@@ -50,7 +51,7 @@ namespace Projet
             TextBoxWriters.Text = stringListToString(movie.LstWriters);
             ComboRating.SelectedIndex = movie.Rating;
             ComboGender.SelectedIndex = movie.LstGenders.Key;
-            pathImage = movie.Image;
+            pathImage = movie.Image == "" ? MainWindow.PATH + MainWindow.RES + "template.jpg" : movie.Image ;
             ImageImage.Source = new BitmapImage(new Uri(pathImage));
         }
 
@@ -159,7 +160,8 @@ namespace Projet
                  .addDirectors(stringTolistString(TextBoxDirector.Text))
                  .addStars(stringTolistString(TextBoxStars.Text))
                  .addWriters(stringTolistString(TextBoxWriters.Text))
-                 .addYear(year);
+                 .addYear(year)
+                 .addImage(MainWindow.PATH + MainWindow.RES + "template.jpg");
             this.DialogResult = true;
         }
 

@@ -23,8 +23,8 @@
                 </MenuItem>
                 <MenuItem Header="_Edition">
                     <MenuItem x:Name="MenuAddMovie" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
-                    <MenuItem x:Name="MenuRemoveMovie" Header="_Ajouter un film" Click="BtnDeleteMovie_Click"/>
-                    <MenuItem x:Name="MenuEditMovie" Header="_Ajouter un film" Click="BtnEditMovie_Click"/>
+                    <MenuItem x:Name="MenuRemoveMovie" Header="_Editer un film" Click="BtnDeleteMovie_Click"/>
+                    <MenuItem x:Name="MenuEditMovie" Header="_Supprimer un film" Click="BtnEditMovie_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
@@ -52,7 +52,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Titre" Width="Auto"  Binding="{Binding Title}"/>
                 <DataGridTextColumn Header="Annee" Width="45" Binding="{Binding Year}"/>
-                <DataGridTextColumn Header="Genre" Width="45" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Genre" Width="Auto" Binding="{Binding Gender}"/>
                 <DataGridTextColumn Header="Directors" Width="Auto" Binding="{Binding LstDirectors, Converter={StaticResource ListToStringConverter}}"/>
                 <DataGridTextColumn Header="Writers" Width="Auto" Binding="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}"/>
                 <DataGridTextColumn Header="Stars" Width="Auto" Binding="{Binding LstStars, Converter={StaticResource ListToStringConverter}}"/>
