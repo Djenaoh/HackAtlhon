@@ -12,9 +12,10 @@ namespace Projet
 
         string title;
         string description;
-        List<string> lstGenders;
+        KeyValuePair<int, string> lstGenders;
         int year;
         int rating;
+        string gender = "None";
         string image;
         List<List<string>> lstReviews;
         List<string> lstDirectors; 
@@ -28,23 +29,24 @@ namespace Projet
         public string Image { get => image; set => image = value; }
         public int Year { get => year; set => year = value; }
         public List<List<string>> LstReviews { get => lstReviews; set => lstReviews = value; }
-        public List<string> LstGenders { get => lstGenders; set => lstGenders = value; }
+        public KeyValuePair<int, string> LstGenders { get => lstGenders; set => lstGenders = value; }
         public DateTime Date { get => date; set => date = value; }
         public List<string> LstDirectors { get => lstDirectors; set => lstDirectors = value; }
         public List<string> LstWriters { get => lstWriters; set => lstWriters = value; }
         public List<string> LstStars { get => lstStars; set => lstStars = value; }
+        public string Gender { get => gender; set => gender = value; }
 
         public Item()
         {
             Date = DateTime.Now;
         }
 
-        public Item(string title, string description, int rating, string image, int year, List<List<string>> lstReviews, List<string> lstGenders, DateTime date, List<string> lstDirectors, List<string> lstWriters, List<string> lstStars)
+        public Item(string title, string description, int rating, string image, int year, List<List<string>> lstReviews, KeyValuePair<int, string> lstGenders, DateTime date, List<string> lstDirectors, List<string> lstWriters, List<string> lstStars)
         {
             Title = title;
             Description = description;
             Rating = rating;
-            Image = MainWindow.PATH + image;
+            Image = image;
             Year = year;
             LstReviews = lstReviews;
             LstGenders = lstGenders;
@@ -67,7 +69,7 @@ namespace Projet
         }
         public Item addImage(string e)
         {
-            this.Image = MainWindow.PATH  + e;
+            this.Image = e;
             return this;
         }
         public Item addReviews(params List<string>[] e)
@@ -82,16 +84,10 @@ namespace Projet
             }
             return this;
         }
-        public Item addGenres(params string[] e)
+        public Item addGenres(KeyValuePair<int, string> e)
         {
-            if (this.LstGenders == null)
-            {
-                lstGenders = new List<string>();
-            }
-            for (int i = 0; i < e.Length; i++)
-            {
-                this.LstGenders.Add(e[i]);
-            }
+            lstGenders = e;
+            gender = e.Value;
             return this;
         }
         public Item addDirectors(params string[] e)

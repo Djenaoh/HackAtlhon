@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -26,15 +27,21 @@ namespace Projet
         {
             InitializeComponent();
             this.Title = "Ajouter";
-            img_icon_val.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_val.png"));
-            img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
-            img_icon_browse.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_browse.png"));
+            load();
+        }
+
+        private void load()
+        {
+            img_icon_val.Source = new BitmapImage(new Uri(MainWindow.PATH + MainWindow.RES + "icon_val.png"));
+            img_icon_anul.Source = new BitmapImage(new Uri(MainWindow.PATH + MainWindow.RES + "icon_anul.png"));
+            img_icon_browse.Source = new BitmapImage(new Uri(MainWindow.PATH + MainWindow.RES + "icon_browse.png"));
         }
         
         public AddEdit(Item movie)
         {
             InitializeComponent();
             this.Title = "Editer";
+            load();
             TextBoxTitle.Text = movie.Title;
             TextBoxYear.Text = movie.Year.ToString();
             TextBoxDescription.Text = movie.Description;
@@ -42,8 +49,9 @@ namespace Projet
             TextBoxStars.Text = stringListToString(movie.LstStars);
             TextBoxWriters.Text = stringListToString(movie.LstWriters);
             ComboRating.SelectedIndex = movie.Rating;
-            ComboGender.SelectedItem = stringListToString(movie.LstGenders);
-            ImageImage.Source = new BitmapImage(new Uri(movie.Image));
+            ComboGender.SelectedIndex = movie.LstGenders.Key;
+            pathImage = movie.Image;
+            ImageImage.Source = new BitmapImage(new Uri(pathImage));
         }
 
         private string stringListToString(List<string> lstE)
@@ -72,10 +80,14 @@ namespace Projet
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
+                if (!Directory.Exists(PATH + "Image"))
+                {
+                    System.IO.Directory.CreateDirectory(PATH + "Image");
+                }
                 pathImage = openFileDialog.FileName;
                 BitmapImage source = new BitmapImage(new Uri(pathImage));
                 System.IO.File.Copy(pathImage, PATH + "Image\\" + openFileDialog.SafeFileName, true);
-                pathImage = "Image\\" + openFileDialog.SafeFileName;
+                pathImage = MainWindow.PATH + "Image\\" + openFileDialog.SafeFileName;
                 ImageImage.Source = source;
             }
         }
@@ -143,7 +155,7 @@ namespace Projet
                  .addTitle(title)
                  .addDescription(TextBoxDescription.Text)
                  .addRating(rating)
-                 .addGenres(gender)
+                 .addGenres(EnumGender.stringToGender(gender))
                  .addDirectors(stringTolistString(TextBoxDirector.Text))
                  .addStars(stringTolistString(TextBoxStars.Text))
                  .addWriters(stringTolistString(TextBoxWriters.Text))

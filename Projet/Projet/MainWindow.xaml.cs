@@ -33,16 +33,17 @@ namespace Projet
         ObservableCollection<Wrapper> lstSeries = new ObservableCollection<Wrapper>();
         
         public static string PATH = System.AppDomain.CurrentDomain.BaseDirectory;
+        public static string RES = "/res/interface/";
         public MainWindow()
         {
             InitializeComponent();
             
             DataContext = lstMovies;
-            img_logo.Source = new BitmapImage(new Uri(PATH + "/Image/interface/logo.jpg"));
-            img_icon_add.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_add.png"));
+            img_logo.Source = new BitmapImage(new Uri(PATH + RES + "logo.jpg"));
+            img_icon_add.Source = new BitmapImage(new Uri(PATH + RES + "icon_add.png"));
             //img_icon_anul.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_anul.png"));
-            img_icon_delete.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_delete.png"));
-            img_icon_edit.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_edit.png"));
+            img_icon_delete.Source = new BitmapImage(new Uri(PATH + RES + "icon_delete.png"));
+            img_icon_edit.Source = new BitmapImage(new Uri(PATH + RES + "icon_edit.png"));
             //img_icon_Val.Source = new BitmapImage(new Uri(PATH + "/Image/interface/icon_Val.png"));
         }
         
@@ -97,9 +98,9 @@ namespace Projet
         {
             Item lebowski = new Item().addTitle("The Big Lebowski")
                 .addYear(1998)
-                .addGenres("Comedie", "Crime")
+                .addGenres(EnumGender.Comedie)
                 .addRating(5)
-                .addImage("/Image/BigLebowski.jpg")
+                .addImage(PATH + "Image\\BigLebowski.jpg")
                 .addDescription("Jeff \"The Dude\" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.")
                 .addReviews(new List<string>(new string[] { "Greatest movie ever made.", "With the combination of the writing of the Coen brothers and the Cinematography of Roger Deakins, they created a film as beautiful as it is funny. The Coen brothers consistently impress me with their ability to write an interesting story with fascinating yet quirky characters. Without resorting to gratuitous sexual scenes like many other writer/directors of R rated films the Coen brothers manage to add the right amount of language and violence that is necessary to the story without it becoming the only reason for watching. 'The Big Lebowski' has so many clever and hilarious lines that you have to watch it over and over again. " }))
                 .addDirectors("Joel Coen", "Ethan Coen")
