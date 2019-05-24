@@ -37,7 +37,6 @@ namespace Projet
         public MainWindow()
         {
             InitializeComponent();
-            
             DataContext = lstMovies;
             img_logo.Source = new BitmapImage(new Uri(PATH + RES + "logo.jpg"));
             img_icon_add.Source = new BitmapImage(new Uri(PATH + RES + "icon_add.png"));
@@ -45,6 +44,9 @@ namespace Projet
             img_icon_delete.Source = new BitmapImage(new Uri(PATH + RES + "icon_delete.png"));
             img_icon_edit.Source = new BitmapImage(new Uri(PATH + RES + "icon_edit.png"));
             //img_icon_Val.Source = new BitmapImage(new Uri(PATH + + REZ + "icon_Val.png"));
+            BtnEdit.IsEnabled = false;
+            BtnDelete.IsEnabled = false;
+
         }
         
             
@@ -57,12 +59,18 @@ namespace Projet
             {
                 deSerialize(openFileDialog.FileName);
             }
+            if (DataGridList.Items.Count != 0)
+            {
+                BtnEdit.IsEnabled = true;
+                BtnDelete.IsEnabled = true;
+            }
         }
 
         private void MenuFileSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text files (*.txt)|*.txt";
+            saveFileDialog.FileName = "database.txt";
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (saveFileDialog.ShowDialog() == true)
             {
@@ -127,6 +135,11 @@ namespace Projet
             lstMovies.Add(lebowski);
             lstMovies.Add(killBill1);
             lstMovies.Add(killBill2);
+            if (DataGridList.Items.Count != 0)
+            {
+                BtnEdit.IsEnabled = true;
+                BtnDelete.IsEnabled = true;
+            }
         }
 
         private void DeleteDataGrid_Click(object sender, RoutedEventArgs e)
@@ -140,6 +153,11 @@ namespace Projet
             if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
             {
                 lstMovies.Add(fenetre02.ReturnData());
+                if (DataGridList.Items.Count != 0)
+                {
+                    BtnEdit.IsEnabled = true;
+                    BtnDelete.IsEnabled = true;
+                }
             }
             else // Annuler
             {
@@ -159,6 +177,10 @@ namespace Projet
                 {
                     lstMovies.Remove(yyy);
                 }
+            }
+            else // Pas d'item selectionner dans la grid
+            {
+                MessageBox.Show("Erreur: Pas d'éléments sélectionné");
             }
 
         }
@@ -180,19 +202,56 @@ namespace Projet
               }
               else // Pas d'item selectionner dans la grid
               {
-                  MessageBox.Show("Erreur: Plusieurs elements doivent être sélectionner");
+                  MessageBox.Show("Erreur: Pas d'éléments sélectionné");
               }
           }
 
         private void BtnFind_Click(object sender, RoutedEventArgs e)
         {
+            DataGridList.SelectedItems.Clear();
+            string choise = ComboBoxFilter.SelectionBoxItem.ToString();
             int count = 0;
             int preCount = 0;
-            DataGridList.SelectedItems.Clear();
+
             foreach (Item item in DataGridList.Items)
             {
+                string[] lstItems = item.Title.Split(' ');
+                int i = 0;
+                switch (choise)
+                {
+                    case "Year":
+                        lstItems[0] = item.Year.ToString();
+                        break;
+                    case "Gender":
+                        lstItems = item.Gender.Split(' ');
+                        break;
+                    case "Directors":
+                        foreach (string str in item.LstDirectors)
+                        {
+                            lstItems[i] = str;
+                            i++;
+                        }
+                        break;
+                    case "Writers":
+                        foreach (string str in item.LstWriters)
+                        {
+                            lstItems[i] = str;
+                            i++;
+                        }
+                        break;
+                    case "Stars":
+                        foreach(string str in item.LstStars)
+                        {
+                            lstItems[i] =str;
+                            i++;
+                        }
+                        break;
+                    case "Rating":
+                        lstItems[0] = item.Rating.ToString();
+                        break;
+                }
                 preCount = 0;
-                foreach(string strFind in item.Title.Split(' '))
+                foreach(string strFind in lstItems)
                 {
                     foreach (string strBox in TextBoxFind.Text.Split(' '))
                     {
@@ -212,6 +271,11 @@ namespace Projet
         private void MenuFileClose_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ComboBoxFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGridList.SelectedItems.Clear();
         }
     }
 }

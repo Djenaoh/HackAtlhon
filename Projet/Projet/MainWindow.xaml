@@ -17,14 +17,13 @@
                 <MenuItem Header="_Fichier">
                     <MenuItem x:Name="MenuFileOpen" Header="_Ouvrir" Click="MenuFileOpen_Click"/>
                     <MenuItem x:Name="MenuFileSave" Header="_Enregistrer" Click="MenuFileSave_Click"/>
-                    <MenuItem x:Name="MenuFileClose" Header="_Fermer" Click="DeleteDataGrid_Click"/>
-                    <Separator/>
+                   <Separator/>
                     <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Edition">
                     <MenuItem x:Name="MenuAddMovie" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
-                    <MenuItem x:Name="MenuRemoveMovie" Header="_Editer un film" Click="BtnDeleteMovie_Click"/>
-                    <MenuItem x:Name="MenuEditMovie" Header="_Supprimer un film" Click="BtnEditMovie_Click"/>
+                    <MenuItem x:Name="MenuRemoveMovie" Header="_Editer un film" Click="BtnEditMovie_Click"/>
+                    <MenuItem x:Name="MenuEditMovie" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
@@ -36,7 +35,7 @@
             </Menu>
         </DockPanel>
         <Image x:Name="img_logo" Margin="0,50,0,0" VerticalAlignment="Center" Stretch= "Uniform"  HorizontalAlignment="Center" />
-        <DataGrid x:Name="DataGridList" Height="510" Margin="10,24,10,24" VerticalAlignment="Top" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}" Width="auto" Opacity="0.8">
+        <DataGrid x:Name="DataGridList" Height="510" Margin="10,24,10,24" VerticalAlignment="Top" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource Item}}" Width="auto" Opacity="0.8" HeadersVisibility="Column">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="BtnEditMovie_Click"/>
@@ -76,19 +75,27 @@
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
         <Grid Height="192" Margin="0,539,10,0" VerticalAlignment="Top" Width="600" MinWidth="600" HorizontalAlignment="Right" >
-            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Height="192" Click="BtnEditMovie_Click" Background="Transparent" BorderBrush="Transparent">
+            <Button x:Name="BtnEdit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="229" Height="192" Click="BtnEditMovie_Click" Background="Transparent" BorderBrush="Transparent">
                 <Image x:Name="img_icon_edit" Stretch="Fill" Height="109" Width="125"/>
             </Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Top" Width="229" Height="192" Click="BtnDeleteMovie_Click" Background="Transparent" BorderBrush="Transparent">
+            <Button x:Name="BtnDelete" HorizontalAlignment="Center" VerticalAlignment="Top" Width="229" Height="192" Click="BtnDeleteMovie_Click" Background="Transparent" BorderBrush="Transparent">
                 <Image x:Name="img_icon_delete" Stretch="Fill" Height="109" Width="125"/>
             </Button>
-            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="229" Height="192" Click="MenuAddMovie_Click" Background="Transparent" BorderBrush="Transparent">
+            <Button x:Name="BtnAdd" HorizontalAlignment="Right" VerticalAlignment="Top" Width="229" Height="192" Click="MenuAddMovie_Click" Background="Transparent" BorderBrush="Transparent">
                 <Image x:Name="img_icon_add" Stretch="Fill" Height="109" Width="125"/>
             </Button>
         </Grid>
         <TextBox x:Name="TextBoxFind" HorizontalAlignment="Left" Height="24" Margin="243,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
         <Button x:Name="BtnFind" Content="Recherche" HorizontalAlignment="Left" Margin="438,0,0,0" VerticalAlignment="Top" Width="75" Click="BtnFind_Click" Height="24"/>
-        <ComboBox x:Name="ComboBoxFilter" HorizontalAlignment="Left" Margin="678,2,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ComboBoxFilter" SelectedIndex="0"  HorizontalAlignment="Left" Margin="678,2,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxFilter_SelectionChanged">
+            <ComboBoxItem>Title</ComboBoxItem>
+            <ComboBoxItem>Year</ComboBoxItem>
+            <ComboBoxItem>Gender</ComboBoxItem>
+            <ComboBoxItem>Directors</ComboBoxItem>
+            <ComboBoxItem>Writers</ComboBoxItem>
+            <ComboBoxItem>Stars</ComboBoxItem>
+            <ComboBoxItem>Rating</ComboBoxItem>
+        </ComboBox>
     </Grid>
 
 
