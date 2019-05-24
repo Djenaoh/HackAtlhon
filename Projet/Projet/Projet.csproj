@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>t__l__chargement_bLm_icon.ico</ApplicationIcon>
+    <ApplicationIcon>mmm_logo_v7D_10.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -112,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="t__l__chargement_bLm_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mmm_logo_v7D_10.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
