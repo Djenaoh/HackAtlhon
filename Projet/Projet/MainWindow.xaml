@@ -21,9 +21,9 @@
                     <MenuItem x:Name="MenuFileExit" Header="_Quitter" Click="MenuFileExit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Edition">
-                    <MenuItem x:Name="MenuAddMovie"  InputGestureText="Ctrl+N" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
-                    <MenuItem x:Name="MenuRemoveMovie"  InputGestureText="Ctrl+E" Header="_Editer un film" Click="BtnEditMovie_Click"/>
-                    <MenuItem x:Name="MenuEditMovie" InputGestureText="Ctrl+D" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
+                    <MenuItem x:Name="MenuAddMovie"  InputGestureText="A" Header="_Ajouter un film" Click="MenuAddMovie_Click"/>
+                    <MenuItem x:Name="MenuRemoveMovie"  InputGestureText="E" Header="_Editer un film" Click="BtnEditMovie_Click"/>
+                    <MenuItem x:Name="MenuEditMovie" InputGestureText="D" Header="_Supprimer un film" Click="BtnDeleteMovie_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Aide">
                     <MenuItem x:Name="MenuHelpShow" Header="_Afficher l'aide"/>
@@ -62,13 +62,50 @@
                     <Border BorderThickness="0" Background="BlanchedAlmond" Padding="10">
                         <StackPanel Orientation="Vertical">
                             <StackPanel HorizontalAlignment="Left">
-                                <Image Height="90" Width="60" Source="{Binding Image}"/>
+
+
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+
+
+                                    </Grid.RowDefinitions>
+
+                                    <Image Height="160" Width="120" Source="{Binding Image}" Grid.Column="0" Grid.RowSpan="8"/>
+
+                                    <TextBlock Text="Description:   " VerticalAlignment="Center" Grid.Column="1" Grid.Row="7" FontSize="16" FontFamily="Constantia" FontWeight="Bold" />
+                                    <TextBlock Text="{Binding Description}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="7"/>
+                                    <TextBlock Text="Title: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Title}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0"/>
+                                    <TextBlock Text="Annee: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Year}" VerticalAlignment="Center" Grid.Column="2"  Grid.Row="1"/>
+                                    <TextBlock Text="Genre: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Gender}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2"/>
+                                    <TextBlock Text="Directors:  " VerticalAlignment="Center" Grid.Column="1" Grid.Row="3" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding LstDirectors, Converter={StaticResource ListToStringConverter}}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="3"/>
+
+                                    <TextBlock Text="Writer: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding LstWriters, Converter={StaticResource ListToStringConverter}}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="4"/>
+                                    <TextBlock Text="Stars: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding LstStars, Converter={StaticResource ListToStringConverter}}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="5"/>
+                                    <TextBlock Text="Rating: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="6" FontSize="16" FontFamily="Constantia" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Rating}" VerticalAlignment="Center" Grid.Column="2" Grid.Row="6"/>
+                                </Grid>
                             </StackPanel>
 
-                            <StackPanel HorizontalAlignment="Right">
-                                <TextBlock Text="Description: " VerticalAlignment="Center" />
-                                <TextBlock Text="{Binding Description}" VerticalAlignment="Center" />
-                            </StackPanel>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
