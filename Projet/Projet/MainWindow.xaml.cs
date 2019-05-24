@@ -50,9 +50,7 @@ namespace Projet
             BtnDelete.IsEnabled = false;
 
         }
-
-
-
+        
         private void MenuFileOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -183,13 +181,16 @@ namespace Projet
             List<Item> a_effacer = new List<Item>();
             if (DataGridList.SelectedItems.Count > 0)
             {
-                foreach (Item xxx in DataGridList.SelectedItems)
+                if (MessageBoxResult.Yes == MessageBox.Show("Été vous sûr de vouloir supprimer ce(s) éléement(s)", "Validation", MessageBoxButton.YesNo, MessageBoxImage.Hand))
                 {
-                    a_effacer.Add(xxx);
-                }
-                foreach (Item yyy in a_effacer)
-                {
-                    lstMovies.Remove(yyy);
+                    foreach (Item xxx in DataGridList.SelectedItems)
+                    {
+                        a_effacer.Add(xxx);
+                    }
+                    foreach (Item yyy in a_effacer)
+                    {
+                        lstMovies.Remove(yyy);
+                    }
                 }
             }
             else // Pas d'item selectionner dans la grid
