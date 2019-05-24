@@ -126,6 +126,11 @@ namespace Projet
                 res += "-Le texte entré dans la partie Année  \"" + TextBoxYear.Text + "\" n'est pas correct. Veuillez entrer une année en nombre entier\n";
                 TextBoxYear.Clear();
             }
+            else if (!(year > 1700 && year < 2500))
+            {
+                res += "-Le texte entré dans la partie Année  \"" + TextBoxYear.Text + "\" n'est pas correct. Veuillez entrer une année compris entre 1700 et 2500\n";
+                TextBoxYear.Clear();
+            }
             if (!isValidString(TextBoxDirector.Text))
             {
                 res += "-Le texte entré dans la partie Directeur \"" + TextBoxDirector.Text + "\" n'est pas correct. Veuillez écrire correctement s'il vous plait (évitez les caractères spéciaux)\n";
@@ -172,7 +177,7 @@ namespace Projet
 
         private bool isValidString(string e)
         {
-            Regex regexItem = new Regex("^[a-zA-Z0-9.,;:'\"\\- ]*$");
+            Regex regexItem = new Regex("^[a-zA-Z0-9.,;:'\"\\-éèàçâêûîôäëüïöùæœ&ÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]* $");
             return regexItem.IsMatch(e);
 
         }
