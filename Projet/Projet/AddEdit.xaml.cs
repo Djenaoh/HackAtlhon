@@ -172,7 +172,7 @@ namespace Projet
 
         private bool isValidString(string e)
         {
-            Regex regexItem = new Regex("^[a-zA-Z0-9.,;:'\" ]*$");
+            Regex regexItem = new Regex("^[a-zA-Z0-9.,;:'\"- ]*$");
             return regexItem.IsMatch(e);
 
         }
