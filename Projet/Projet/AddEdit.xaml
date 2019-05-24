@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-        Title="AjoutEdition" Height="483.884" Width="450.224">
+        Title="AjoutEdition" Height="483.884" Width="450.224" ResizeMode="NoResize">
     <Grid Background="AliceBlue">
         <Label x:Name="LabelTitle" Content="Titre:" HorizontalAlignment="Left" Margin="220,20,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelYear" Content="Année:" HorizontalAlignment="Left" Margin="220,60,150,0" VerticalAlignment="Top"/>
@@ -45,8 +45,8 @@
         <Button x:Name="BtnAnnuler" HorizontalAlignment="Right" Margin="0,0,133,4" VerticalAlignment="Bottom" Width="53" Click="BtnAnnuler_Click" Height="49" Background="Transparent" BorderBrush="Transparent">
             <Image  x:Name="img_icon_anul" Stretch="Fill" Height="41" Width="43"  />
         </Button>
-        <Button x:Name="BtnImage" HorizontalAlignment="Left" Height="30" Margin="179,265,0,0" VerticalAlignment="Top" Width="30" Click="BtnImage_Click" Background="Transparent" BorderBrush="Transparent">
-            <Image  x:Name="img_icon_browse" Stretch="Fill" Height="25" Width="25" RenderTransformOrigin="0.5,0.5"  />
+        <Button x:Name="BtnImage" HorizontalAlignment="Left" Height="55" Margin="155,218,0,0" VerticalAlignment="Top" Width="55" Click="BtnImage_Click" Background="Transparent" BorderBrush="Transparent">
+            <Image  x:Name="img_icon_browse" Stretch="Fill" Height="47" Width="47" RenderTransformOrigin="0.5,0.5"  />
         </Button>
 
 
