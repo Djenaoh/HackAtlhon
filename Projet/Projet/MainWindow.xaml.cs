@@ -106,7 +106,27 @@ namespace Projet
                 .addDirectors("Joel Coen", "Ethan Coen")
                 .addStars("Jeff Bridges", "John Goodman", "Julianne Moore")
                 .addWriters("Ethan Coen", "Joel Coen");
+            Item killBill1 = new Item().addTitle("Kill Bill: Volume I")
+                .addYear(2003)
+                .addGenres(EnumGender.Action)
+                .addRating(5)
+                .addImage(PATH + "Image\\BigLebowski.jpg")
+                .addDescription("After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her.")
+                .addDirectors("Quentin Tarantino")
+                .addStars("Uma Thurman", "David Carradine", "Daryl Hannah")
+                .addWriters("Quentin Tarantino");
+            Item killBill2 = new Item().addTitle("Kill Bill: Volume II")
+               .addYear(2004)
+               .addGenres(EnumGender.Action)
+               .addRating(5)
+               .addImage(PATH + "Image\\BigLebowski.jpg")
+               .addDescription("The Bride continues her quest of vengeance against her former boss and lover Bill, the reclusive bouncer Budd, and the treacherous, one-eyed Elle.")
+               .addDirectors("Quentin Tarantino")
+               .addStars("Uma Thurman", "David Carradine", "Michael Madsen")
+               .addWriters("Quentin Tarantino");
             lstMovies.Add(lebowski);
+            lstMovies.Add(killBill1);
+            lstMovies.Add(killBill2);
         }
 
         private void DeleteDataGrid_Click(object sender, RoutedEventArgs e)
