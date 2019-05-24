@@ -152,6 +152,11 @@ namespace Projet
 
         private void MenuAddMovie_Click(object sender, RoutedEventArgs e)
         {
+            add();
+        }
+
+        private void add()
+        {
             AddEdit fenetre02 = new AddEdit();
             if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
             {
@@ -169,6 +174,12 @@ namespace Projet
 
         private void BtnDeleteMovie_Click(object sender, RoutedEventArgs e)
         {
+            delete();
+
+        }
+
+        private void delete()
+        {
             List<Item> a_effacer = new List<Item>();
             if (DataGridList.SelectedItems.Count > 0)
             {
@@ -185,7 +196,6 @@ namespace Projet
             {
                 MessageBox.Show("Erreur: Pas d'éléments sélectionné");
             }
-
         }
 
         private void BtnEditMovie_Click(object sender, RoutedEventArgs e)
@@ -208,6 +218,27 @@ namespace Projet
                 MessageBox.Show("Erreur: Pas d'éléments sélectionné");
             }
         }
+        
+        private void edit()
+        {
+        if (DataGridList.SelectedItems.Count == 1)
+            {
+                Item movie = DataGridList.Items[DataGridList.SelectedIndex] as Item;
+        AddEdit fenetre02 = new AddEdit(movie);
+                if (Convert.ToBoolean(fenetre02.ShowDialog())) // Valider
+                {
+                    lstMovies.Remove(movie);
+                    lstMovies.Add(fenetre02.ReturnData());
+                }
+                else // Annuler
+                {
+                }
+            }
+            else // Pas d'item selectionner dans la grid
+            {
+                MessageBox.Show("Erreur: Pas d'éléments sélectionné");
+            }
+    }
 
         private void BtnFind_Click(object sender, RoutedEventArgs e)
         {
@@ -283,9 +314,17 @@ namespace Projet
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.LeftCtrl && e.Key == Key.E)
+            if (e.Key == Key.D)
             {
-                MessageBox.Show("test");
+                delete();
+            }
+            else if (e.Key == Key.E)
+            {
+                edit();
+            }
+            else if (e.Key == Key.A)
+            {
+                add();
             }
         }
 
