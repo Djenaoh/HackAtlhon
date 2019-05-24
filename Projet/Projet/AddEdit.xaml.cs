@@ -29,6 +29,74 @@ namespace Projet
             this.Title = "Ajouter";
             ImageImage.Source = new BitmapImage(new Uri(MainWindow.PATH + MainWindow.RES + "template.jpg"));
             load();
+            TextChanger();
+        }
+        void TextChanger()
+        {
+            TextBoxTitle.Tag = "Film";
+            TextBoxWriters.Tag = "Scénariste(s)";
+            TextBoxYear.Tag = "Année xxxx";
+            TextBoxDirector.Tag = "Réalisateur(s)";
+            TextBoxStars.Tag = "Acteur(s)";
+            TextBoxDescription.Tag = "Ajoutez une description/Synopsis";
+
+            TextBoxTitle.Foreground = Brushes.Gray;
+            TextBoxWriters.Foreground = Brushes.Gray;
+            TextBoxYear.Foreground = Brushes.Gray;
+            TextBoxDirector.Foreground = Brushes.Gray;
+            TextBoxDescription.Foreground = Brushes.Gray;
+            TextBoxStars.Foreground = Brushes.Gray;
+
+
+            TextBoxTitle.Text = (string)TextBoxTitle.Tag;
+            TextBoxWriters.Text = (string)TextBoxWriters.Tag;
+            TextBoxYear.Text = (string)TextBoxYear.Tag;
+            TextBoxDirector.Text = (string)TextBoxDirector.Tag;
+            TextBoxDescription.Text = (string)TextBoxDescription.Tag;
+            TextBoxStars.Text = (string)TextBoxStars.Tag;
+
+
+            TextBoxTitle.LostFocus += new RoutedEventHandler(OnEmptyText);
+            TextBoxWriters.LostFocus += new RoutedEventHandler(OnEmptyText);
+            TextBoxYear.LostFocus += new RoutedEventHandler(OnEmptyText);
+            TextBoxDirector.LostFocus += new RoutedEventHandler(OnEmptyText);
+            TextBoxDescription.LostFocus += new RoutedEventHandler(OnEmptyText);
+            TextBoxStars.LostFocus += new RoutedEventHandler(OnEmptyText);
+
+            TextBoxTitle.GotFocus += new RoutedEventHandler(OnFillText);
+            TextBoxWriters.GotFocus += new RoutedEventHandler(OnFillText);
+            TextBoxYear.GotFocus += new RoutedEventHandler(OnFillText);
+            TextBoxDirector.GotFocus += new RoutedEventHandler(OnFillText);
+            TextBoxDescription.GotFocus += new RoutedEventHandler(OnFillText);
+            TextBoxStars.GotFocus += new RoutedEventHandler(OnFillText);
+        }
+        void OnEmptyText(object sender, EventArgs e)
+        {
+            var textbox = (TextBox)sender;
+
+            if (string.IsNullOrEmpty(textbox.Text))
+            {
+                TextBoxTitle.Text = (string)TextBoxTitle.Tag;
+                TextBoxWriters.Text = (string)TextBoxWriters.Tag;
+                TextBoxYear.Text = (string)TextBoxYear.Tag;
+                TextBoxDirector.Text = (string)TextBoxDirector.Tag;
+                TextBoxDescription.Text = (string)TextBoxDescription.Tag;
+                TextBoxStars.Text = (string)TextBoxStars.Tag;
+
+                textbox.Foreground = Brushes.Gray;
+            }
+
+        }
+        void OnFillText(object sender, EventArgs e)
+        {
+            var textbox = (TextBox)sender;
+
+            if (!string.IsNullOrEmpty(textbox.Text))
+            {
+                textbox.Text = "";
+                textbox.Foreground = Brushes.Black;
+
+            }
         }
 
         private void load()
