@@ -1,2 +1,3 @@
 # HackAtlhon
-HEH HackAtlhon
+
+First year project: HackAtlhon
